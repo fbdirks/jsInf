@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="UTF-8">
+</head>
+<body>
+<header>
+</header>
+<article>
+<h2>[15] Event-handlers</h2>
+<p>
+We hebben bijna alle schakels in handen voor het bouwen van goede formulier validatie in Javascript. Maar formulier validatie moet ook 'getriggerd' worden, dat wil zeggen er moet gereageerd worden op events. Bekende events (ten dele ook al bekend van CSS) zijn:
+<ul>
+	<li>onclick (met de muis &eacute;&eacute;n keer ergens op klikken)</li>
+	<li>onsubmit  (op de submitknop van een formulier klikken)</li>
+	<li>onmouseover (met de muis over een element gaan zonder klikken)</li>
+	<li>onkeypress (een toets indrukken)</li>
+	<li>onload (de webpagina is klaar met laden)</li>
+</ul>
+In totaal zijn er meer dan 50 events die de browser kan onderscheiden en waar dus javascript aan gekoppeld zou kunnen worden. 
+</p>
+<p>
+Er zijn meerdere manieren om javascript aan events te koppelen. De traditionele manier is om in de html declaraties van elementen een event op te nemen met een verwijzing naar de javascript functie die gestart moet worden:
+<pre><code class="language-markup"><script type="prism-html-markup">
+		<form action="verwerken.php" method="post" onsubmit="controleren()">
+</script></code></pre>
+Ergens in een <script></script> gedeelte van de pagina bouw je dan de functie controleren(). Het bezwaar tegen deze manier van werken is dat je de trekker scheidt van het wapen. Als je werkt met externe javascripts voelt dat nog meer als een probleem aan. Bovendien meng je nu eigenlijk HTML en Javascript door elkaar. Soms is het handig, maar niet als regel. Net als je ook altijd moet uitkijken met dit soort mengen van HTML en CSS:
+<pre><code class="language-markup"><script type="prism-html-markup">
+  <p style="color: red">
+</script></code></pre>
+Het is niet verboden, maar bij het debuggen van pagina opmaak moet je nu op meer plekken kijken en dat is niet altijd plezierig.
+</p>
+<p>
+Een tweede manier is een HTML element via Javascript zelf te koppelen aan een event en een bijhorende functie. Alles gebeurt dan alleen in Javascript. 
+<pre><code class="language-markup"><script type="prism-html-markup">
+<form id="formulier" action="verwerken.php" method="post">
+</script></code></pre>
+en in het &lt;script> gedeelte:
+<pre><code class="language-javascript">
+	var formulier=document.getDocumentsById("formulier");
+
+	formulier.onsubmit = controleren;  // zie opmerking hieronder
+
+	function controleren() {
+	    .. allerlei code ..
+	}
+</code></pre>
+
+</p>
+<p>
+Opmerking: controleren verwijst naar een functie. Om te voorkomen dat deze functie op deze plek meteen wordt uitgevoerd (zonder dat er echt gesubmit is)  laten we de () weg. Dan wordt de functie pas aangeroepen als er geklikt wordt op de submitknop van het formulier.
+</p><p>
+Een nadeel van deze methode is dat je hem niet makkelijk twee keer kunt gebruiken om twee verschillende events aan een element te koppelen.
+</p><p>
+Een nog modernere methode waarmee dat laatste wel kan is het gebruik maken van de functie addEventListener:
+<pre><code class="language-javascript">
+	var formulier = document.getElementsById("formulier");
+
+	formulier.addEventListener("submit" , controleren);
+
+	function controleren(e) {
+	    .. code ..;
+	    e.preventDefault();
+	}
+</code></pre>    
+Bij de functie declaratie zie je dat een speciale variabele e gebruikt wordt (de naam is facultatief, maar de 'e' zie je als gewoonte overal opduiken). Die 'e' is het eventobject dat je aan de functie meegeeft. Dit object bestaat uit een heleboel gegevens. Je kunt het object inspecteren door de functie bijvoorbeeld zo te noteren:
+<pre><code class="language-javascript">
+ 	function controleren(e) {
+        console.log(e);
+    }
+</code></pre>
+   
+</p>
+<p>
+Als je dan de Console open hebt staan en het script uitvoert zie je welke gegevens je allemaal uit een event object zou kunnen oproepen. Drie voorbeeldjes:
+<ul>
+	<li>e.currentTarget = het element dat het event triggerde</li>
+	<li>e.type = het soort event (bv mouserover of submit)</li>
+	<li>e.preventDefault() = de methode die voorkomt dat de default actie van het element wordt uitgevoerd. De default actie van een submit is het starten van de 'action', de default actie van klikken op een link is naar die pagina toe gaan. PreventDefault voorkomt dat.  </li>
+</ul>
+ 
+</p>    
+
+
+
+</article>
+<footer>
+
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
+</body>
