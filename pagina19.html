@@ -9,76 +9,79 @@
 <header>
 </header>
 <article>
-
-<h2>[13] Strings, Arrays en Objects (kort door de bocht)</h2>
-<p>JS kent net als PHP (en alle andere algemene programmeertalen) variabelen van het type 'string' (= een reeks tekens). 
-<pre><code class="language-javascript">
-var startzin = "Het was koud, bitter koud.";
-</code></pre>
-Enkele of dubbele aanhalingstekens maakt JS niets uit. In PHP heb je dubbele aanhalingstekens nodig als je in een string een variabelenaam in runtime wilde vervangen door de waarde van die variabele. In JS bestaat dat niet. Als je in een JS string een variabele naam opneemt zal alleen die naam en niet de waarde afgedrukt worden. Wil je de waarde afdrukken dan moet je zo iets doen:
-<pre><code class="language-javascript">
-var auteur = "W.G. van der Hulst";
-console.log("geschreven door " + auteur + ".");
-</code></pre>
-<p>Deze stringconcatenatie wordt in PHP door de . gedaan, hier dus door de +.
-Net als bij PHP moet je ieder aanhalingsteken dat onderdeel is van een string door een escape teken laten voorafgaan:
-<pre><code class="language-javascript">
-var naam = 'Maarten \'t Hart';
-console.log(naam);
-</code></pre>
-
-Overigens: dit werkt ook:
-<pre><code class="language-javascript">
-var naam = "Maarten 't Hart";
-console.log(naam);
-</code></pre>
-<p>Net als bij PHP kun je losse letters in een string benaderen via een rugnummer (vanaf 0):
-	<pre><code class="language-javascript">
-	console.log(naam[2] + naam[6]);  => levert a en n op
-	</code></pre>	
-</p>
-<p>Een hele reeks gespecialiseerde string functies maken het mogelijk ieder onderdeeltje van een string te benaderen, splitten en in hoofdletters te veranderen en strings van voor tot achter en omgekeerd te doorzoeken op het voorkomen van letters of kleinere strings. Zie hiervoor de documentatie op (bijvoorbeeld W3schools). 
-	<ul>
-		<li>string.length</li>
-		<li>string.search("speld"); => positie van "speld" in de string</li>
-		<li>string.slice(s,e) => haalt stukje van positie s(tart) tot positie e(ind) op uit de string</li>
-		<li>string.replace("boerenkool","zuurkool"); => vervangt eerstgenoemde door laatstgenoemde in string. Ook bruikbaar met reguliere expressies (zie later).</li>
-		<li>string.match(regex) => retourneert een array met alle keren dat de regex voorkomt in string.</li>
-		
-	</ul>
-</p><p>
-Arrays en Objecten liggen in JS heel dicht bij elkaar. Heel kort door de bocht zou je kunnen zeggen dat het er de schijn van heeft dat objecten in JavaScript heel erg lijken op de associatieve arrays die PHP kent en de Arrays in JS vergelijkbaar zijn met de niet-associatieve arrays van PHP:    
-<br>
-Array:
-<pre><code class="language-javascript">
-var dagen = ["maandag", "dinsdag", "woensdag"];
-console.log(dagen[2]); => levert woensdag op
-</code></pre>
-
-<br>
-Object:
-<pre><code class="language-javascript">
-var auto = { merk:"Opel", type:"Vectra"};
-console.log(auto.merk); => levert "Opel" op
-</code></pre>
-Let in dit laatste geval op de . notatie waarmee je attributen van een object kunt benaderen.</p>
+<h2>[15] Event-handlers</h2>
 <p>
-Voor zowel arrays als objecten zijn er weer een range van handige functies, bijvoorbeeld voor sorteren en dergelijke. Zie de documentatie. Speciale aandacht voor de functie toString: deze functie maakt van de inhoud van een array (of object) een complete string. Dit lijkt een beetje op de print_r functie van PHP en is dus o.a. handig bij debuggen.
+We hebben bijna alle schakels in handen voor het bouwen van goede formulier validatie in Javascript. Maar formulier validatie moet ook 'getriggerd' worden, dat wil zeggen er moet gereageerd worden op events. Bekende events (ten dele ook al bekend van CSS) zijn:
 <ul>
-	<li>array.length => rapporteert het aantal elementen in een array</li>
-	<li>array.toString(); => toont array als één string</li>
-	<li>array.pop() => verwijdert en retourneert het laatste element van de array </li>
-	<li>array.push() => voegt aan het eind een nieuw element toe.</li>
-	<li>array.shift() => verwijdert en retourneert het eerste element van de array</li>
-	<li>array.unshift() => voegt element aan begin toe, andere elementen schuiven op</li>
-	<li>array.splice(s,a,nieuwe waarden) => voegt vanaf positie s nieuwe elementen toe en verwijdert a oude elementen. (a=0 betekent dus invoegen midden in een array)</li>
-	<li>array.slice(s) => snijdt vanaf positie s de elementen uit de oude array weg in een nieuwe array</li>
-	<li>array.sort() => sorteert a-z</li>
-	<li>array.reverse() => sorteert z-a</li>
-	<li>enz...</li>
-</ul>	
+	<li>onclick (met de muis &eacute;&eacute;n keer ergens op klikken)</li>
+	<li>onsubmit  (op de submitknop van een formulier klikken)</li>
+	<li>onmouseover (met de muis over een element gaan zonder klikken)</li>
+	<li>onkeypress (een toets indrukken)</li>
+	<li>onload (de webpagina is klaar met laden)</li>
+</ul>
+In totaal zijn er meer dan 50 events die de browser kan onderscheiden en waar dus javascript aan gekoppeld zou kunnen worden. 
+</p>
+<p>
+Er zijn meerdere manieren om javascript aan events te koppelen. De traditionele manier is om in de html declaraties van elementen een event op te nemen met een verwijzing naar de javascript functie die gestart moet worden:
+<pre><code class="language-markup"><script type="prism-html-markup">
+		<form action="verwerken.php" method="post" onsubmit="controleren()">
+</script></code></pre>
+Ergens in een <script></script> gedeelte van de pagina bouw je dan de functie controleren(). Het bezwaar tegen deze manier van werken is dat je de trekker scheidt van het wapen. Als je werkt met externe javascripts voelt dat nog meer als een probleem aan. Bovendien meng je nu eigenlijk HTML en Javascript door elkaar. Soms is het handig, maar niet als regel. Net als je ook altijd moet uitkijken met dit soort mengen van HTML en CSS:
+<pre><code class="language-markup"><script type="prism-html-markup">
+  <p style="color: red">
+</script></code></pre>
+Het is niet verboden, maar bij het debuggen van pagina opmaak moet je nu op meer plekken kijken en dat is niet altijd plezierig.
+</p>
+<p>
+Een tweede manier is een HTML element via Javascript zelf te koppelen aan een event en een bijhorende functie. Alles gebeurt dan alleen in Javascript. 
+<pre><code class="language-markup"><script type="prism-html-markup">
+<form id="formulier" action="verwerken.php" method="post">
+</script></code></pre>
+en in het &lt;script> gedeelte:
+<pre><code class="language-javascript">
+	var formulier=document.getDocumentsById("formulier");
+
+	formulier.onsubmit = controleren;  // zie opmerking hieronder
+
+	function controleren() {
+	    .. allerlei code ..
+	}
+</code></pre>
 
 </p>
+<p>
+Opmerking: controleren verwijst naar een functie. Om te voorkomen dat deze functie op deze plek meteen wordt uitgevoerd (zonder dat er echt gesubmit is)  laten we de () weg. Dan wordt de functie pas aangeroepen als er geklikt wordt op de submitknop van het formulier.
+</p><p>
+Een nadeel van deze methode is dat je hem niet makkelijk twee keer kunt gebruiken om twee verschillende events aan een element te koppelen.
+</p><p>
+Een nog modernere methode waarmee dat laatste wel kan is het gebruik maken van de functie addEventListener:
+<pre><code class="language-javascript">
+	var formulier = document.getElementsById("formulier");
+
+	formulier.addEventListener("submit" , controleren);
+
+	function controleren(e) {
+	    .. code ..;
+	    e.preventDefault();
+	}
+</code></pre>    
+Bij de functie declaratie zie je dat een speciale variabele e gebruikt wordt (de naam is facultatief, maar de 'e' zie je als gewoonte overal opduiken). Die 'e' is het eventobject dat je aan de functie meegeeft. Dit object bestaat uit een heleboel gegevens. Je kunt het object inspecteren door de functie bijvoorbeeld zo te noteren:
+<pre><code class="language-javascript">
+ 	function controleren(e) {
+        console.log(e);
+    }
+</code></pre>
+   
+</p>
+<p>
+Als je dan de Console open hebt staan en het script uitvoert zie je welke gegevens je allemaal uit een event object zou kunnen oproepen. Drie voorbeeldjes:
+<ul>
+	<li>e.currentTarget = het element dat het event triggerde</li>
+	<li>e.type = het soort event (bv mouserover of submit)</li>
+	<li>e.preventDefault() = de methode die voorkomt dat de default actie van het element wordt uitgevoerd. De default actie van een submit is het starten van de 'action', de default actie van klikken op een link is naar die pagina toe gaan. PreventDefault voorkomt dat.  </li>
+</ul>
+ 
+</p>    
 
 
 
