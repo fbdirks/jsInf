@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="prism/prism-coy.css" rel="stylesheet" />
+<link href="../prism/prism-coy.css" rel="stylesheet" />
 <link href="jstijl.css" rel="stylesheet" />
 <meta charset="UTF-8">
 </head>
 <body>
 <header>
-<h2>Javascript Aantekeningen</h2>
 </header>
-<article>
 
 <h1>[5c] Commentaar</h1>
 <p>Je kunt in JS code commentaar noteren die jou of iemand anders die de code leest misschien kan helpen de code beter te begrijpen. Commentaarregels worden door Javascript volledig genegeerd, ze worden niet uitgevoerd. Er zijn vooral twee soorten commentaar:
@@ -28,14 +26,22 @@ Een handige toepassing van commentaar is het ‘uitzetten’ van bepaalde code r
 	// console.log("Test = " + test);
 </code></pre>
 
-
-
 </article>
 <footer>
-<h6>&copy;2017 dsf</h6>
-</footer>
 
-<script src="prism/prism-coy.js"></script>
-<script src="clip/clipboard.min.js"></script>
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
 </body>
-</html>

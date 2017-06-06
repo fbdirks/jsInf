@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="prism/prism-coy.css" rel="stylesheet" />
+<link href="../prism/prism-coy.css" rel="stylesheet" />
 <link href="jstijl.css" rel="stylesheet" />
 <meta charset="UTF-8">
 </head>
 <body>
 <header>
-<h2>Javascript Aantekeningen</h2>
 </header>
-<article>
 <h1>[6] Het DOM model</h1>
 <p>Fundamenteel voor de mogelijkheid om binnen Javascript heel gericht onderdelen van een webpagina te kunnen beïnvloeden is het DOM model, het Document Object Model. Dit model geeft aan hoe een webbrowser intern een pagina bekijkt, welke objecten (alinea’s, formulieren, koppen, div’s) er op de pagina staan en in welke hierarchie deze objecten staan. Dit is onder andere van belang voor hoe css opmaak wordt doorgegeven. Maar Javascript maakt er dus ook gebruik van om attributen van html objecten mee te beinvloeden. DOM objecten hebben, zoals het echte objecten betaamt, attributen, maar ook methoden.</p>
 <p>Het DOM Model is in de kern niets anders dan een representatie van de elementen van een webpagina:
-  <img src="DOM.png">
+  <img src="img/DOM.png">
   <h6>Bron: washington.edu</h6>
 </p>
 <p>Ieder punt in deze ‘boom’ heet een node.  Er zijn drie soorten nodes:
@@ -48,13 +46,22 @@ document.getElementById(“melding”).innerHTML = melding;
 </code></pre>
 zie je dus het DOM model in actie. Op de pagina wordt gezocht naar het element dat een id “melding” heeft. Van dit element wordt de html in de tag zelf veranderd in de inhoud van de variabele melding.</p>
 
-
 </article>
 <footer>
-<h6>&copy;2017 dsf</h6>
-</footer>
 
-<script src="prism/prism-coy.js"></script>
-<script src="clip/clipboard.min.js"></script>
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
 </body>
-</html>
