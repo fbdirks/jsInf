@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="UTF-8">
+</head>
+<body>
+<header>
+<h2>Javascript Aantekeningen</h2>
+</header>
+<article>
+
+<h1>[8] Keuzes maken:   If</h1>
+<p>In computerprogramma’s moeten keuzes gemaakt kunnen worden door het programma. In een rekenmachine bijvoorbeeld mogen we een deling niet uitvoeren als de deler 0 is. Als het ochtend is mag de website niet ‘goedemiddag’ zeggen, maar moet het ‘goedemorgen’ zijn en als je inlogt met een fout wachtwoord mag er niet naar een volgende pagina gesprongen worden alsof je bent ingelogd. </p>
+<p>Voor dit soort keuzes kent Javascript de commando’s 
+<ul>
+<li>if/elseif/else</li>
+<li>switch</li>
+</ul>
+<p>Dit is een if/elseif/else voorbeeldje:
+<pre><code class="language-javascript">
+if (time < 10) {
+	greeting = "Good morning";
+} else if (time < 20) {
+	greeting = "Good day";
+} else {
+	greeting = "Good evening";
+}
+</code></pre>
+Maar algemeen kun je zeggen dat een if / else if / else blok er zo uit ziet:
+<pre><code class="language-javascript">
+If (voorwaarde 1) {
+		… één of meerdere code regels die worden uitgevoerd
+		als de voorwaarde 1 waar is
+	} else if (voorwaarde 2) {
+		… één of meerdere code regels die worden uitgevoerd
+		als de voorwaarde 2 waar is 
+	} else {
+		… code regels die worden uitgevoerd in alle andere gevallen.
+	}
+</code></pre>
+<p>Een <b>voorwaarde</b> is de uitkomst van een vergelijking:
+<pre><code class="language-javascript">
+	Leeftijd >= 16 ;  // is de leeftijd gelijk of hoger dan 16?
+	Cijfer < 5 ; // Is het cijfer beneden de 5?
+	Password == “geheim”; // Is het password gelijk aan geheim?
+</code></pre>
+Een voorwaarde kan uit meer vergelijkingen bestaan, maar je moet die dan koppelen met een logische koppeling (&& = EN, || = Of):
+<pre><code class="language-javascript">
+	(Naam == “Jan” && password == “geheim”)
+	// is de naam Jan EN het password geheim?
+</code></pre>
+Dit is wat anders dan:
+<pre><code class="language-javascript">
+	(Naam == “Jan” || password == “geheim” ) 
+	// is de naam Jan OF het password geheim?
+</code></pre>
+In dit geval hoeft maar één van de voorwaarden (of beiden) waar te zijn om de hele voorwaarde waar te laten zijn.</p>
+<p>Een ‘negatieve’ vergelijking kan ook:
+<pre><code class="language-javascript">
+(Naam != “Jan”) // kijkt of een naam ongelijk aan Jan is
+</code></pre>
+
+<h2>Oefeningen:</h2>
+Hoe zien de voorwaarden er uit als we:
+<ol>
+<li>Willen kijken of het vandaag “vrijdag” is?</li>
+<li>Willen kijken of een bedrag groter is of gelijk aan 100?</li>
+<li>Willen kijken of een afstand groter is dan 10km maar kleiner dan 20km?</li>
+<li>Willen kijken of een naam “Jan” is of “Jantje” of “Jantina”?</li>
+<li>Willen kijken of een klas NIET gelijk aan is “V4C”;</li>
+</ol>
+<h2>Opmerkingen:</h2>
+<p>Een if commando kun je gebruiken zonder een else if gedeelte, en zelfs zonder een else gedeelte.</p>
+<p>Vergeet niet bij het bekijken of een waarde precies gelijk is aan iets anders een dubbel == te gebruiken. Bedrag==100 is wat anders dan Bedrag=100:
+<ul>
+<li>Bedrag == 100  is een vergelijking die waar of onwaar is</li>
+<li>Bedrag = 100 is een toekenning en die is in JS altijd ‘waar’</li>
+</ul>
+Dus:
+<pre><code class="language-javascript">
+Var wachtwoord=”geenidee”;
+If (wachtwoord = “geheim” {
+console.log(“Mag inloggen”);
+} else {
+console.log(“Mag niet inloggen”);
+}
+</code></pre>
+
+Wat denk je dat deze coderegels uitprinten? 
+
+<!--
+
+De codeblokken die binnen een if uitgevoerd kunnen worden mogen gerust uit heel veel regels bestaan. Als je er maar voor zorgt dat alle coderegels die bij elkaar horen binnen accolades staan:  {  …hiertussen veel regels ... } 
+Als je heel veel verschillende situaties moet vergelijken met een variabele is een switch commando soms handiger dan alsmaar if/elseif/elseif/elseif/else . Het leest prettiger en is minder foutgevoelig. 
+
+Dit is een Switch voorbeeldje:
+
+switch (new Date().getDay()) {
+    case 6:
+    	text = "Today is Saturday";
+        Break;
+    case 5:
+    	text = "Today is Friday";
+        Break;
+    case 4:
+    	text = "Today is Thursday";
+        Break;
+
+    // enzovoorts…
+
+    case 0:
+    	text = "Today is Sunday";
+        break; 
+    default: 
+    	text = "Looking forward to the Weekend";
+}
+
+
+
+
+
+
+//-->
+
+
+</article>
+<footer>
+<h6>&copy;2017 dsf</h6>
+</footer>
+
+<script src="prism/prism-coy.js"></script>
+<script src="clip/clipboard.min.js"></script>
+</body>
+</html>

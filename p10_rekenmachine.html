@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+<table>
+<tr><td><input type="text"  id="getal1"></td></tr>
+<tr><td><input type="text"  id="getal2"></td></tr>
+<tr><td><span id="resultaat" ></span></td></tr>
+<tr><td><button onclick="optellen()">+</button></td></tr>
+</table>
+
+<script>
+function optellen() {
+	var g1 = document.getElementById("getal1").value;
+	var g2 = document.getElementById("getal2").value;
+	var uitkomst = Number(g1) + Number(g2);
+	document.getElementById("resultaat").innerHTML = uitkomst;
+
+}
+</script>
+
+</body>
+</html>

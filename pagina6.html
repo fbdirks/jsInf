@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="UTF-8">
+</head>
+<body>
+<header>
+<h2>Javascript Aantekeningen</h2>
+</header>
+<article>
+<h1>[5b] Variabelen</h1>
+<p>In alle programmeertalen zijn variabelen van groot belang. Variabelen zijn stukjes geheugen waar je iets in kunt opslaan die je zelf een naam geeft. Door die naam te gebruiken kun je gegevens opslaan of ophalen uit het geheugen. Voorbeeld:</p>
+<pre>
+<code class="language-javascript">
+	Var leeftijd = 18;
+	console.log(“De leeftijd is “ + leeftijd);
+</code>
+</pre>
+<p>Als je een variabele voor de eerste keer gebruikt moet je de variabele ‘aanmelden’ bij javascript. Dit heet declareren. Je doet dit met het var commando:</p>
+<pre>
+<code class="language-javascript">
+	var test = 9;
+	var naam;
+</code>
+</pre>
+<p>In het tweede geval is de variabele wel aangemeld maar heb je er nog niets ingestopt. Dat komt dan later wel.</p>
+<p>Met de ‘scope’ van een variabele bedoelen we het geldigheidsbereik. Als je een variabele meteen na de &lt;script&gt; tag declareert kan heel je JS code (ook de functies die je misschien schrijft) er gebruik van maken. Als je een variabele binnen een functie declareert en gebruikt is deze variabele alleen maar binnen die functie geldig.</p>
+<p>Naamgeving van variabelen is in principe vrij. Kies altijd namen die duidelijk maken waarom of waarvoor je dat geheugen nodig hebt. Als je na een paar maanden weer naar oude programmacode kijkt zul je daar dankbaar voor zijn. Het is niet mogelijk om javascript opdrachten te gebruiken als naam van een variabele:
+<pre><code class="language-javascript">Var for = 10 ;</code></pre>
+is dus niet mogelijk!</p>
+
+
+
+
+</article>
+<footer>
+<h6>&copy;2017 dsf</h6>
+</footer>
+
+<script src="prism/prism-coy.js"></script>
+<script src="clip/clipboard.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="UTF-8">
+</head>
+<body>
+<header>
+<h2>Javascript Aantekeningen</h2>
+</header>
+<article>
+<h1>[7] Hoe verander je een specifiek HTML element met Javascript?</h1>
+<p>Met Javascript kun je vrijwel ieder HTML element beinvloeden. Je kunt bijvoorbeeld de opmaak (kleur), de inhoud of de zichtbaarheid veranderen. Voor nu kijken we alleen even naar het veranderen van een heel specifiek HTML element. Je kunt een specifiek HTML element alleen maar veranderen als dat element een ‘id’ heeft:</p>
+
+<pre><code class="language-html">&lt;span id=”melding”&gt;&lt;/span&gt;</code></pre>
+<p>De volgende functie plaatst de tekst “Pas op!” in deze &lt;span&gt; tag:
+<pre><code class="language-javascript">
+	function uitkijken() {
+		document.getElementById("melding").innerHTML = "&lt;i&gt;Pas op!&lt;/i&gt;";
+	}
+</code></pre>
+Het groene gedeelte van de regel die met document begint is verplicht en betekent eigenlijk “Zoek op deze webpagina naar een element dat het volgende ID heeft”. Het deel tussen haakjes bevat dat ID en het deel na de = (innerHTML) geeft aan dat je de inhoud daarvan wilt veranderen Je mag hierin html tags gebruiken.</p>
+<p>Merk op dat de tekst die achter de = zet in zijn geheel tussen " " moet staan. </p>
+<p>Je kunt ook style elementen veranderen met een functie. Dat ziet er maar een klein beetje anders uit:
+<pre><code class="language-javascript">
+	function rode_waarschuwing() {
+		document.getElementById("melding").style.color = "red";
+	}
+</code></pre>
+ Je kunt ook heel goed beide opdrachten in één functie zetten.</p>
+
+
+
+
+
+
+
+
+
+
+</article>
+<footer>
+<h6>&copy;2017 dsf</h6>
+</footer>
+
+<script src="prism/prism-coy.js"></script>
+<script src="clip/clipboard.min.js"></script>
+</body>
+</html>

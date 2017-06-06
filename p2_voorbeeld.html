@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body onload="groetjes()">
+
+<span id="melding" style="font-family: arial; font-size: 14pt;"></span>
+<h1>Welkom op deze site</h1>
+<p>Lorem ipsum dolor …. id est laborum.</p>
+
+<script>
+    function groetjes() {
+        /*
+            functie doet de groeten, afhankelijk van de tijd.
+        */
+		var d = new Date();
+        var n = d.getHours();
+        var melding = "";
+        
+		if(n>=0 && n<6) {
+            melding = "Goedenacht!";
+        } else if (n>=6 && n<12) {
+            melding = "Goedemorgen!";
+        } else if (n>=12 && n<18) {
+            melding = "Goedemiddag!";
+        } else {
+            melding = "Goedenavond!";
+        }
+        document.getElementById("melding").innerHTML = melding;
+    }
+</script>
+
+</body>
+</html>

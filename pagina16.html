@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="UTF-8">
+</head>
+<body>
+<header><h2>Javascript aantekeningen</h2></header>
+<article>
+<h2>Rekenen</h2>
+<p>JS kent dezelfde mathematische kernoperatoren als de meeste andere programmeertalen en rekenmachines. Dus:
+	<ul>
+		<li>uitkomst = 34 + 12; // som 46</li>
+		<li>uitkomst = 22 - 8; // verschil 14</li>
+		<li>uitkomst = 2 * 3; // vermenigvuldiging 6</li>
+		<li>uitkomst = 15 / 4; // deling, 3.75</li>
+		<li>uitkomst = 15 % 4 ; // restdeling, 3 dus</li>
+</ul>
+<p>Onder een 'shorthand' operator verstaan we een bewerking die een verkorte vorm van opschrijven kent naast de 'normale' langere vorm. Als we bijvoorbeeld bij de variabele teller 1 willen optellen kunnen we dat zo doen:
+<pre><code class="language-javascript">teller = teller + 1   </code></pre>
+De = betekent hier dus eigenlijk 'wordt gelijk aan'. Specifiek voor deze optelling (1 ergens bij optellen), die <i>heel veel</i> voorkomt,  is een verkorte notatie heel gebruikelijk:
+<pre><code class="language-javascript">teller++;   </code></pre>
+De notatie teller-- bestaat ook en is hetzelfde als: teller = teller - 1;
+</p>
+<p>Belangrijke andere 'shorthand' operatoren van javascript zijn:
+<pre><code class="language-javascript">
+prijs *= percentage ; // prijs = prijs * percentage;
+lengte /= 2 ; // lengte = lengte / 2
+bericht += " een toevoeging"; // bericht = bericht + " een toevoeging"
+</code></pre>
+'Shorthand' operatoren hoef je niet te gebruiken. Dus als je je prettiger voelt bij de langere manier van opschrijven is dat prima.</p>
+<p>Voor ingewikkelder mathematische functies, van het berekenen van de wortel tot en met het afronden van resultaten, kent JS de mathematische bibliotheek (deze zit standaard ingebouwd in javascript) die je bijvoorbeeld zo kunt gebruiken:
+<pre><code class="language-javascript">uitkomst = Math.pow(8, 3); // 8 tot de macht 3
+uitkomst = Math.sqrt(64); // de wortel van 64   </code></pre>
+Voor alle mogelijke functies van Math verwijs ik naar de W3schools referentiepagina op <a href="https://www.w3schools.com/jsref/jsref_obj_math.asp">w3schools</a></p>
+
+</article>
+<footer><h6>&copy;2017 dsf</h6></footer>
+<script src="prism/prism-coy.js"></script>
+<script src="clip/clipboard.min.js"></script>
+</body>
+</html>

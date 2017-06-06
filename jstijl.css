@@ -1,0 +1,59 @@
+body {
+	
+	font-family: verdana;
+	font-size: 10pt;
+	background-color: #ffffb3;
+}
+
+article {
+	width: 800px;
+	height: 100%;
+	margin: auto;
+	padding: 10px 20px;
+	background-color:  #e6e6e6;
+	border: 1px solid gray;
+	border-radius: 5px;
+	box-shadow: 10px 10px 5px #888888;
+}
+
+
+header {
+	width: 900px;
+	margin: auto;
+	text-align: center;
+}
+
+footer {
+	width: 900px;
+	margin: auto;
+	text-align: center;
+}
+
+a:link {
+	text-decoration: none;
+	color: #004080;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #004080;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #004080;
+}
+
+a:active {
+	text-decoration: none;
+	color: #004080;
+}
+
+#lijst {
+	font-family: arial;
+	font-size: 9 pt;
+}
+
+
+
+

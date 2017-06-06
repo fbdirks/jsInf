@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="UTF-8">
+</head>
+<body>
+<header>
+<h2>Javascript Aantekeningen</h2>
+</header>
+<article>
+<h1>[3] Waar plaats je een javascript programma(-onderdeel)?</h1>
+<p>Een javascript programma kan op de volgende plekken neergezet worden:
+<ul>
+<li>
+(traditioneel) in de &lt;head&gt; sectie van een webpagina tussen &lt;script&gt; tags. In de script tags hoeft geen verwijzing meer te staan naar javascript (wat voor html5 wel moest), javascript is de default.</li>
+<li>(modern) in de &lt;body&gt;sectie van een webpagina, bij voorkeur aan het eind om het tonen van de HTML onderdelen te bespoedigen.</li>
+<li>(professioneel) in een aparte file (met .js extensie) die in de &lt;head&gt; via het &lt;script&gt; commando wordt binnengelezen. Deze file kan ergens op het eigen filesysteem van de website staan, maar ook op een andere plek op het internet.</li>
+</ul>
+<pre data-src="snippet.html"></pre>
+
+<p>De eerste manier is vooral van belang bij functiebibliotheken van jezelf (filelink zoals hierboven), de tweede manier als je bibliotheken van anderen gebruikt.</p>
+<p>Als je javascript gebruikt bij het automatiseren van een specifieke applicatie dan zal de plek waar je de scripts opslaat meestal door de applicatie voorgesteld worden. In de meeste gevallen wordt dan wel een extensie .js gebruikt, maar dat kan bij een specifieke applicatie ook anders geregeld zijn.</p>
+</article>
+<footer>
+<h6>&copy;2017 dsf</h6>
+</footer>
+
+<script src="prism/prism-coy.js"></script>
+<script src="clip/clipboard.min.js"></script>
+</body>
+</html>

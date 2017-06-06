@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="UTF-8">
+</head>
+<body>
+<header><h2>Javascript aantekeningen</h2></header>
+<article>
+<h2>Herhalingen</h2>
+<p>Herhalingsopdrachten laten je programma bepaalde instructies zolang herhalen als het moet. Een groep instructies die herhaalt wordt noemen we vaak een 'loop' (uitspreken als 'loep' - op zijn Engels). Bij <b>alle</b> herhalingen moet je altijd drie dingen weten:
+<ul>
+	<li>Hoe hou ik bij hoevaak iets herhaald is (de teller)?</li>
+	<li>Wanneer moet de herhaling stoppen (de eindtest)?</li>
+	<li>Hoe verandert de teller iedere keer als er een herhaling gedaan is?</li>
+</ul>
+We spreken van een oneindige loop als de eindtest nooit gehaald zal worden.</p>
+<p>Er zijn drie commando's in javascript die je opdrachten laten herhalen: FOR , WHILE en DO/WHILE.</p>
+<p>Het for commando herhaalt een groep instructies een aantal keren en in de aanroep van het for commando herken je de drie hierbovengenoemde punten: de teller (met de startwaarde), de eindtest en de verandering van de teller:
+<pre><code class="language-javascript">
+for (i = 0; i < 5; i++) {
+	text += "The number is " + i + "<br>";
+}</code></pre>
+De teller is hier i, de teller start bij 0 en gaat net zolang door totdat de teller gelijk is aan 5. Iedere keer dat de instructies lopen wordt de teller 1 verhoogd (i++);
+</p>
+<p>Bij het While commando wordt in de aanroep van While alleen de eindtest genoemd. Dat betekent dat je als programmeur er zelf voor moet zorgen dat de andere twee aandachtspunten (wat is de teller en hoe verandert de teller bij iedere loop?) voor elkaar zijn. Deze code voert hetzelfde uit als de for loop hierboven:
+<pre><code class="language-javascript"> 
+var i = 0;
+while (i < 5) {
+	text += "The number is " + i + "<br>";
+	i++;
+}</code></pre>
+Mocht je bijvoorbeeld de i++ in de loop vergeten dan kan je zomaar met een oneindige loop te maken krijgen. Soms is dat de bedoeling, bijvoorbeeld bij een alarm. 
+<pre><code class="language-javascript"> 
+var alarm = false;
+while (!alarm) {
+	alarm=controleer_deur();
+}</code></pre>
+Hierbij wordt verondersteld dat de functie controleer_deur de waarde <b>true</b> afgeeft als iemand de deur open doet. Als niemand de deur aanraakt blijft de While loop dus lang doorlopen..
+</p>
+<p>Het commando DO / WHILE lijkt heel veel op WHILE maar het kenmerkende verschil is dat bij DO / WHILE de loop code altijd één keer wordt uitgevoerd voordat de eindtest wordt uitgevoerd. Soms heb je dat nodig voor het zetten van bepaalde variabelen. Deze code voert weer hetzelfde uit als de FOR en WHILE hierboven:
+<pre><code class="language-javascript"> 
+var i = 0;
+do {
+	text += "The number is " + i + "<br>";
+	i++;
+} while (i<5);
+</code></pre>
+
+
+</p>
+	
+
+
+
+
+</article>
+<footer><h6>&copy;2017 dsf</h6></footer>
+<script src="prism/prism-coy.js"></script>
+<script src="clip/clipboard.min.js"></script>
+</body>
+</html>pagina15.html

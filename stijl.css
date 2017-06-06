@@ -1,0 +1,32 @@
+body {
+font-family: verdana;
+}
+
+a:link {
+	text-decoration: none;
+	color: #004080;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #004080;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #004080;
+}
+
+a:active {
+	text-decoration: none;
+	color: #004080;
+}
+
+#lijst {
+	font-family: arial;
+	font-size: 9 pt;
+}
+
+
+
+

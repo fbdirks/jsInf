@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="UTF-8">
+</head>
+<body>
+<header>
+<h2>Javascript Aantekeningen</h2>
+</header>
+<article>
+
+<h1>[5d] Andere basissyntax</h1>
+<p>De basissyntax van javascript is niet moeilijk. </p>
+<p>Iedere JS regel wordt afgesloten met een ;  om aan te geven dat het commando klaar is. </p>
+<pre><code class="language-javascript">
+var x = "deze regel is niet af"
+var y = "deze regel is wel af";
+</code></pre>
+<p>Aanhalingstekens " en ' mag je beiden gebruiken en hebben beiden hetzelfde effect. Je mag ze niet mixen. Dit mag dus wel:  test = "hallo"  of test = 'Hallo', maar dit niet:  test = "Hallo'.</p>
+<pre><code class="language-javascript">
+var groet = "hans";
+groet = 'hans';
+groet = "hans'; // dit is niet correct (let op de syntaxkleuren)
+</code></pre>
+<p>JS is hoofdlettergevoelig. Een variabele test is dus niet hetzelfde als de variabele Test. <p>
+<pre><code class="language-javascript">
+var test = "OK";
+var Test = "Niet OK";
+</code></pre>
+<p>Een blok javascript code regels die bij elkaar horen kun je tussen accolades zetten: {  } . Het aantal regels dat tussen accolades mag staan is in principe onbeperkt. </p>
+<pre><code class="language-javascript">
+{
+	console.log("blok 1");
+	x++;
+}
+
+</code></pre>
+<p>console.log() print iets uit naar de javascript console. Die kun je in een browser meestal openen door F12 in te drukken. (Op school werkt dat niet altijd..)</p>
+<p>Op deze manier kun je de inhoud van een variabele printen: 
+<pre><code class="language-javascript">console.log("in variabele x zit: " + x);</code></pre>
+<p>Debuggen van een programma betekent vooral: je programma tegen je laten praten. Door op allerlei punten console.log commando’s in te bouwen kun je nagaan waar precies de uitvoering van je programma spaak loopt.</p>
+<p>Het is altijd een goed idee om als een programma helemaal goed loopt overbodige debugregels weg te halen. Een methode kan zijn er commentaartekens voor te zetten. Je bent ze dan niet kwijt, ze doen het alleen niet meer.</p>
+
+
+
+
+
+</article>
+<footer>
+<h6>&copy;2017 dsf</h6>
+</footer>
+
+<script src="prism/prism-coy.js"></script>
+<script src="clip/clipboard.min.js"></script>
+</body>
+</html>
