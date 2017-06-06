@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 </head>
 <body>
-<header><h3>Javascript aantekeningen</h3></header>
+<header>
+</header>
 <article>
 <h1>[jQ1] jQuery 1</h1>
 <p>De javascript bibliotheek jQuery wordt overal op het internet gebruikt om het bouwen van interactieve webpagina's te versnellen en te vergemakkelijken. Met jQuery kun je bijvoorbeeld heel makkelijk de css van een element op een pagina laten veranderen (een input veld dat je vergeten bent in te vullen een opvallen rood kader geven bijvoorbeeld). Omdat jQuery zelf volledig uit javascript bestaat kun je betogen dat het gebruiken van jQuery eigenlijk overbodig is. Alles wat jQuery kan, kan javascript zelf natuurlijk ook. Het voordeel is alleen maar dat de ontwikkelaars van jQuery al die veel voorkomende acties al helemaal geprogrammeerd hebben en daarin ook nog eens rekening hebben gehouden met verschillen in browsers. Gebruik maken van jQuery maakt het dan voor anderen sneller en makkelijker om webpagina's te voorzien van dit soort effecten.</p>
@@ -79,8 +80,22 @@ Als iemand klikt op een alinea komt er een mededeling op het scherm.</p>
 
 
 </article>
-<footer><h6>&copy;2017 dsf</h6></footer>
+<footer>
+
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
 <script src="../prism/prism-coy.js"></script>
 <script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
 </body>
 </html>

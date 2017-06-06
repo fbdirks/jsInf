@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 </head>
 <body>
+	
 <header>
-<h2>Javascript Aantekeningen</h2>
 </header>
 <article>
 <h2>Work in progress</h2>
@@ -17,6 +17,8 @@
 	<li><a href="pagina2.html" target="_paginas">hoe ziet een javascript programma er uit?</a></li>
 	<li><a href="pagina3.html" target="_paginas">waar plaats je een JS programma?</a></li>
 	<li><a href="pagina4.html" target="_paginas">wie voert de code uit?</a></li>
+	<li><a href="pagina5a.html" target="_paginas">hoe praat JS met je?</a></li>
+	<li><a href="pagina5b.html" target="_paginas">het DOM model</a></li>
 	<li><a href="pagina5.html" target="_paginas">wat zijn functions?</a></li>
 	<li><a href="pagina6.html" target="_paginas">wat zijn variabelen?</a></li>
 	<li><a href="pagina7.html" target="_paginas">wat is commentaar?</a></li>
@@ -38,16 +40,21 @@
 
 </article>
 <footer>
-<h6>&copy;2017 dsf</h6>
 </footer>
-<script src="../jquery/jquery.js"></script>
+<!-- jQuery CDN -->
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
 <script src="../prism/prism-coy.js"></script>
 <script src="../clip/clipboard.min.js"></script>
 <script src="functies.js"></script>
 <script>
-$( document ).ready(){
+$( document ).ready(function(){
+	kop();
 	voet();
-}
+});
 </script>
 </body>
 </html>

@@ -21,6 +21,11 @@ header {
 	width: 900px;
 	margin: auto;
 	text-align: center;
+	font-size: 14pt;
+	padding: 15px;
+}
+header img {
+	vertical-align: middle;
 }
 
 footer {

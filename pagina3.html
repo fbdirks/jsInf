@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="prism/prism-coy.css" rel="stylesheet" />
+<link href="../prism/prism-coy.css" rel="stylesheet" />
 <link href="jstijl.css" rel="stylesheet" />
 <meta charset="UTF-8">
 </head>
 <body>
 <header>
-<h2>Javascript Aantekeningen</h2>
 </header>
 <article>
 <h1>[3] Waar plaats je een javascript programma(-onderdeel)?</h1>
@@ -24,10 +23,21 @@
 <p>Als je javascript gebruikt bij het automatiseren van een specifieke applicatie dan zal de plek waar je de scripts opslaat meestal door de applicatie voorgesteld worden. In de meeste gevallen wordt dan wel een extensie .js gebruikt, maar dat kan bij een specifieke applicatie ook anders geregeld zijn.</p>
 </article>
 <footer>
-<h6>&copy;2017 dsf</h6>
-</footer>
 
-<script src="prism/prism-coy.js"></script>
-<script src="clip/clipboard.min.js"></script>
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
 </body>
 </html>
