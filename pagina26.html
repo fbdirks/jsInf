@@ -1,11 +1,14 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>jQuery les</title>
-	<script src="../jquery/jquery-3.2.1.min.js"></script>
-	<link href="../prism/prism-coy.css" rel="stylesheet" />
-	<link href="jstijl.css" rel="stylesheet" />
-	<meta charset="UTF-8">
+<title>jQuery les</title>
+<link href="../prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="UTF-8">
+
 	<style>
 		#change_me {
 			position: absolute; /* bij animaties soms hard nodig */
@@ -22,9 +25,11 @@
 			margin-left: 10px;
 		}
 	</style>
+
 </head>
 <body>
-	
+<header>
+</header>
 <article>
 	<div align="center">
 		<button id="move_up">Beweeg omhoog</button>
@@ -52,15 +57,23 @@
 	</div>
 	
 	</article>
-	<footer>
-		<h6>&copy;2017 dsf</h6>
-	</footer>
-
-	<script src="../prism/prism-coy.js"></script>
-	<script src="../clip/clipboard.min.js"></script>
-	<!-- eigen scripts -->
-	<script>
+<footer>
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
 	$(document).ready(function() {
+
+	kop();
+	voet();
+
+
 		// Een paar startup default instellingen (plaatje en broncode moeten onzichtbaar zijn)
 		$("img").slideUp();
 		$("#broncode").slideUp();

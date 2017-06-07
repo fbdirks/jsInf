@@ -10,11 +10,16 @@ function kop() {
 	if (vorige<1) vorige = 1;
 	var volgendePagina = "pagina" + volgende.toString() +  ".html";
 	var vorigePagina = "pagina" + vorige.toString() +  ".html";
+	
+	if (filename=="index.html") {
+		volgendePagina = "pagina1.html";
+		vorigePagina = "index.html";
+	}
  
   var logo = "img/jsmall.png";
   var kopTekst = "<img src=\"" + logo + "\" />"+ " <i>aantekeningen</i>";
   kopTekst += "<br><br><span style=\"text-align: right\" title=\"vorige pagina\"><a href=\"" + vorigePagina + "\">&lt;</a>";
-  kopTekst += " <a href=\"pagina1.html\" title=\"pagina 1\">*</a> ";
+  kopTekst += " <a href=\"index.html\" title=\"pagina 1\">*</a> ";
   kopTekst += "<a href=\""+ volgendePagina + "\" title=\"volgende pagina\">&gt;</a></span>";
   $('header').html(kopTekst);
   console.log(kopTekst);
