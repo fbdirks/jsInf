@@ -14,6 +14,8 @@ function kop() {
 	if (filename=="index.html") {
 		volgendePagina = "pagina1.html";
 		vorigePagina = "index.html";
+	} else if (filename=="pagina1.html"){
+		vorigePagina = "index.html";
 	}
  
   var logo = "img/jsmall.png";
