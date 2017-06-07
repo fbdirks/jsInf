@@ -9,49 +9,118 @@
 <header>
 </header>
 <article>
-<h2>Herhalingen</h2>
-<p>Herhalingsopdrachten laten je programma bepaalde instructies zolang herhalen als het moet. Een groep instructies die herhaalt wordt noemen we vaak een 'loop' (uitspreken als 'loep' - op zijn Engels). Bij <b>alle</b> herhalingen moet je altijd drie dingen weten:
+<h1>15.  Keuzes maken:   If</h1>
+<p>In computerprogramma’s moeten keuzes gemaakt kunnen worden door het programma. In een rekenmachine bijvoorbeeld mogen we een deling niet uitvoeren als de deler 0 is. Als het ochtend is mag de website niet ‘goedemiddag’ zeggen, maar moet het ‘goedemorgen’ zijn en als je inlogt met een fout wachtwoord mag er niet naar een volgende pagina gesprongen worden alsof je bent ingelogd. </p>
+<p>Voor dit soort keuzes kent Javascript de commando’s 
 <ul>
-	<li>Hoe hou ik bij hoevaak iets herhaald is (de teller)?</li>
-	<li>Wanneer moet de herhaling stoppen (de eindtest)?</li>
-	<li>Hoe verandert de teller iedere keer als er een herhaling gedaan is?</li>
+<li>if/elseif/else</li>
+<li>switch</li>
 </ul>
-We spreken van een oneindige loop als de eindtest nooit gehaald zal worden.</p>
-<p>Er zijn drie commando's in javascript die je opdrachten laten herhalen: FOR , WHILE en DO/WHILE.</p>
-<p>Het for commando herhaalt een groep instructies een aantal keren en in de aanroep van het for commando herken je de drie hierbovengenoemde punten: de teller (met de startwaarde), de eindtest en de verandering van de teller:
+<p>Dit is een if/elseif/else voorbeeldje:
 <pre><code class="language-javascript">
-for (i = 0; i < 5; i++) {
-	text += "The number is " + i + "<br>";
-}</code></pre>
-De teller is hier i, de teller start bij 0 en gaat net zolang door totdat de teller gelijk is aan 5. Iedere keer dat de instructies lopen wordt de teller 1 verhoogd (i++);
-</p>
-<p>Bij het While commando wordt in de aanroep van While alleen de eindtest genoemd. Dat betekent dat je als programmeur er zelf voor moet zorgen dat de andere twee aandachtspunten (wat is de teller en hoe verandert de teller bij iedere loop?) voor elkaar zijn. Deze code voert hetzelfde uit als de for loop hierboven:
-<pre><code class="language-javascript"> 
-var i = 0;
-while (i < 5) {
-	text += "The number is " + i + "<br>";
-	i++;
-}</code></pre>
-Mocht je bijvoorbeeld de i++ in de loop vergeten dan kan je zomaar met een oneindige loop te maken krijgen. Soms is dat de bedoeling, bijvoorbeeld bij een alarm. 
-<pre><code class="language-javascript"> 
-var alarm = false;
-while (!alarm) {
-	alarm=controleer_deur();
-}</code></pre>
-Hierbij wordt verondersteld dat de functie controleer_deur de waarde <b>true</b> afgeeft als iemand de deur open doet. Als niemand de deur aanraakt blijft de While loop dus lang doorlopen..
-</p>
-<p>Het commando DO / WHILE lijkt heel veel op WHILE maar het kenmerkende verschil is dat bij DO / WHILE de loop code altijd één keer wordt uitgevoerd voordat de eindtest wordt uitgevoerd. Soms heb je dat nodig voor het zetten van bepaalde variabelen. Deze code voert weer hetzelfde uit als de FOR en WHILE hierboven:
-<pre><code class="language-javascript"> 
-var i = 0;
-do {
-	text += "The number is " + i + "<br>";
-	i++;
-} while (i<5);
+if (time < 10) {
+	greeting = "Good morning";
+} else if (time < 20) {
+	greeting = "Good day";
+} else {
+	greeting = "Good evening";
+}
+</code></pre>
+Maar algemeen kun je zeggen dat een if / else if / else blok er zo uit ziet:
+<pre><code class="language-javascript">
+If (voorwaarde 1) {
+		… één of meerdere code regels die worden uitgevoerd
+		als de voorwaarde 1 waar is
+	} else if (voorwaarde 2) {
+		… één of meerdere code regels die worden uitgevoerd
+		als de voorwaarde 2 waar is 
+	} else {
+		… code regels die worden uitgevoerd in alle andere gevallen.
+	}
+</code></pre>
+<p>Een <b>voorwaarde</b> is de uitkomst van een vergelijking:
+<pre><code class="language-javascript">
+	Leeftijd >= 16 ;  // is de leeftijd gelijk of hoger dan 16?
+	Cijfer < 5 ; // Is het cijfer beneden de 5?
+	Password == “geheim”; // Is het password gelijk aan geheim?
+</code></pre>
+Een voorwaarde kan uit meer vergelijkingen bestaan, maar je moet die dan koppelen met een logische koppeling (&& = EN, || = Of):
+<pre><code class="language-javascript">
+	(Naam == “Jan” && password == “geheim”)
+	// is de naam Jan EN het password geheim?
+</code></pre>
+Dit is wat anders dan:
+<pre><code class="language-javascript">
+	(Naam == “Jan” || password == “geheim” ) 
+	// is de naam Jan OF het password geheim?
+</code></pre>
+In dit geval hoeft maar één van de voorwaarden (of beiden) waar te zijn om de hele voorwaarde waar te laten zijn.</p>
+<p>Een ‘negatieve’ vergelijking kan ook:
+<pre><code class="language-javascript">
+(Naam != “Jan”) // kijkt of een naam ongelijk aan Jan is
 </code></pre>
 
+<h2>Oefeningen:</h2>
+Hoe zien de voorwaarden er uit als we:
+<ol>
+<li>Willen kijken of het vandaag “vrijdag” is?</li>
+<li>Willen kijken of een bedrag groter is of gelijk aan 100?</li>
+<li>Willen kijken of een afstand groter is dan 10km maar kleiner dan 20km?</li>
+<li>Willen kijken of een naam “Jan” is of “Jantje” of “Jantina”?</li>
+<li>Willen kijken of een klas NIET gelijk aan is “V4C”;</li>
+</ol>
+<h2>Opmerkingen:</h2>
+<p>Een if commando kun je gebruiken zonder een else if gedeelte, en zelfs zonder een else gedeelte.</p>
+<p>Vergeet niet bij het bekijken of een waarde precies gelijk is aan iets anders een dubbel == te gebruiken. Bedrag==100 is wat anders dan Bedrag=100:
+<ul>
+<li>Bedrag == 100  is een vergelijking die waar of onwaar is</li>
+<li>Bedrag = 100 is een toekenning en die is in JS altijd ‘waar’</li>
+</ul>
+Dus:
+<pre><code class="language-javascript">
+Var wachtwoord=”geenidee”;
+If (wachtwoord = “geheim” {
+console.log(“Mag inloggen”);
+} else {
+console.log(“Mag niet inloggen”);
+}
+</code></pre>
 
-</p>
-	
+Wat denk je dat deze coderegels uitprinten? 
+
+<!--
+
+De codeblokken die binnen een if uitgevoerd kunnen worden mogen gerust uit heel veel regels bestaan. Als je er maar voor zorgt dat alle coderegels die bij elkaar horen binnen accolades staan:  {  …hiertussen veel regels ... } 
+Als je heel veel verschillende situaties moet vergelijken met een variabele is een switch commando soms handiger dan alsmaar if/elseif/elseif/elseif/else . Het leest prettiger en is minder foutgevoelig. 
+
+Dit is een Switch voorbeeldje:
+
+switch (new Date().getDay()) {
+    case 6:
+    	text = "Today is Saturday";
+        Break;
+    case 5:
+    	text = "Today is Friday";
+        Break;
+    case 4:
+    	text = "Today is Thursday";
+        Break;
+
+    // enzovoorts…
+
+    case 0:
+    	text = "Today is Sunday";
+        break; 
+    default: 
+    	text = "Looking forward to the Weekend";
+}
+
+
+
+
+
+
+//-->
 
 </article>
 <footer>

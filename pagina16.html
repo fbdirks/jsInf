@@ -9,48 +9,52 @@
 <header>
 </header>
 <article>
-<h2>Rekenen</h2>
-<p>JS kent dezelfde mathematische kernoperatoren als de meeste andere programmeertalen en rekenmachines. Dus:
-	<ul>
-		<li>uitkomst = 34 + 12; // som 46</li>
-		<li>uitkomst = 22 - 8; // verschil 14</li>
-		<li>uitkomst = 2 * 3; // vermenigvuldiging 6</li>
-		<li>uitkomst = 15 / 4; // deling, 3.75</li>
-		<li>uitkomst = 15 % 4 ; // restdeling, 3 dus</li>
-</ul>
-<p>Onder een 'shorthand' operator verstaan we een bewerking die een verkorte vorm van opschrijven kent naast de 'normale' langere vorm. Als we bijvoorbeeld bij de variabele teller 1 willen optellen kunnen we dat zo doen:
-<pre><code class="language-javascript">teller = teller + 1   </code></pre>
-De = betekent hier dus eigenlijk 'wordt gelijk aan'. Specifiek voor deze optelling (1 ergens bij optellen), die <i>heel veel</i> voorkomt,  is een verkorte notatie heel gebruikelijk:
-<pre><code class="language-javascript">teller++;   </code></pre>
-De notatie teller-- bestaat ook en is hetzelfde als: teller = teller - 1;
-</p>
-<p>Belangrijke andere 'shorthand' operatoren van javascript zijn:
-<pre><code class="language-javascript">
-prijs *= percentage ; // prijs = prijs * percentage;
-lengte /= 2 ; // lengte = lengte / 2
-bericht += " een toevoeging"; // bericht = bericht + " een toevoeging"
+<h1>16. Keuzes maken:  switch</h1>
+<p>Als je heel veel verschillende situaties moet vergelijken met een variabele is een switch commando soms handiger dan alsmaar if/elseif/elseif/elseif/else . Het leest prettiger en is minder foutgevoelig. </p>
+<p>Dit is een Switch voorbeeldje:
+<pre><code class="language-javascript">   
+switch (new Date().getDay()) {
+    case 6:
+    	text = "Today is Saturday";
+        Break;
+    case 5:
+    	text = "Today is Friday";
+        Break;
+    case 4:
+    	text = "Today is Thursday";
+        Break;
+
+    // enzovoorts
+
+    case 0:
+    	text = "Today is Sunday";
+        break; 
+    default: 
+    	text = "Looking forward to the Weekend";
+}
 </code></pre>
-'Shorthand' operatoren hoef je niet te gebruiken. Dus als je je prettiger voelt bij de langere manier van opschrijven is dat prima.</p>
-<p>Voor ingewikkelder mathematische functies, van het berekenen van de wortel tot en met het afronden van resultaten, kent JS de mathematische bibliotheek (deze zit standaard ingebouwd in javascript) die je bijvoorbeeld zo kunt gebruiken:
-<pre><code class="language-javascript">uitkomst = Math.pow(8, 3); // 8 tot de macht 3
-uitkomst = Math.sqrt(64); // de wortel van 64   </code></pre>
-Voor alle mogelijke functies van Math verwijs ik naar de W3schools referentiepagina op <a href="https://www.w3schools.com/jsref/jsref_obj_math.asp">w3schools</a></p>
-	</article>
-	<footer>
-	
-	</footer>
-	<script
-	  src="https://code.jquery.com/jquery-3.2.1.min.js"
-	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-	  crossorigin="anonymous"></script>
-	  
-	<script src="../prism/prism-coy.js"></script>
-	<script src="../clip/clipboard.min.js"></script>
-	<script src="functies.js"></script>
-	<script>
-	$( document ).ready(function(){
-		kop();
-		voet();
-	});
-	</script>
-	</body>
+<p>In de ronde haken van de switch regel staat op welke variabele gelet zal worden. In het voorbeeld is dat de uitkomst van de javascriptfunctie die bekijkt welke dag het vandaag is. Achter de diverse 'case' regels staat de waarde van die variabele die een bepaalde actie vraagt. Die actie staat achter de : van de case regel genoteerd. Het <b>break</b> commando is nodig om na het uitvoeren van die acties de switch te stoppen. Het is niet altijd nodig, maar voor de zekerheid kan het geen kwaad altijd een case blok met een break te eindigen. Het blok dat begint met <b>default:</b> is het 'afvoerputje': als de variabele aan geen van de 'case'gevallen voldoet zullen de acties die bij default staan uitgevoerd worden.</p>
+
+
+
+
+
+</article>
+<footer>
+
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
+</body>

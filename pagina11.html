@@ -8,33 +8,18 @@
 <body>
 <header>
 </header>
-
 <article>
-<h1>Een voorbeeld</h1>
-<p>Onder het voorbeeld staan een paar vragen en opdrachten. Als je de muis in het voorbeeld beweegt zie je rechtsboven twee knoppen. Als je klikt op <b>copy</b> kun je het bestand 'plakken' in je programma editor.</p>
+<h1>11. Hoe start je een function?</h1>
+<p>Een function wordt gestart door een 'event', een gebeurtenis. Een heel goed te snappen event is het klikken op een knop. Een knop kan op een HTML pagina zo gedefinieerd worden:
+<pre><code class="language-javascript">&lt;button onclick="mijnfunctie()"&gt;Klik mij&lt;/button&gt;</code></pre>
+Het rode gedeelte is het gedeelte waarin wordt gezegd wat er moet gebeuren bij een klik op de knop, in dit geval is dat dus het starten van de JS function 'mijnfunctie'.</p>
+<p>
+Een ander goed te snappen event is het onload event in de &lt;body&gt;. Onload is het event dat gestart wordt als een pagina helemaal geladen is. Dus:
+<pre><code class="language-javascript">&lt;body onload="groetjes()"&gt;</button></code></pre>
+betekent dus dat de Javascript function ‘groetjes’ gestart moet worden als deze pagina helemaal geladen is. </p>
+<p>Er zijn nog veel meer events, in totaal meer dan 50. Ze zijn niet allemaal belangrijk maar we gaan er wel een aantal kennen leren de komende tijd.</p>
 
 
-<pre data-src="p10_voorbeeld.html">
-
-</pre>
-
-<p>Dit is een webpagina waarmee je de provinciehoofsteden kunt oefenen. Als je klikt op een provinciehoofdstad moet er op de plek van het antwoord (kijk naar de id!) komen te staan van welke hoofdstad dit de provincie is. Voor Groningen werkt het al. </p>
-<p>Kijk eerst of je de volgende dingen in de gaten hebt:</p>
-<ul>
-<li>Welke javascript functie komt in dit bestand voor?</li>
-<li>Waardoor wordt deze functie gestart? Welke <b>event</b> zorgt hiervoor?</li>
-<li>Wat doet de functie precies?</li>
-<li>Hoe weet de functie welk onderdeel van de pagina de functie moet veranderen?</li>
-</ul>
-<p>Maak hierna de volgende opdrachten:</p>
-<ol>
-<li>Neem het bestand over op je eigen computer en kijk of het voor Groningen werkt.</li>
-<li>Maak het af voor de andere provincies.</li>
-<i>Zorg ervoor dat bij JOUW provincie de tekst een andere kleur krijgt dan bij de andere provincies.</li>
-<li>Let er op dat als je daarna een andere hoofdstad aanklikt de tekst weer gewoon zwart wordt.</li>
-<li>Maak een extra knop voor Nederland.</li>
-<li>Maak een extra knop waarmee je het antwoordveld leeg maakt.</li>
-</ol>
 
 </article>
 <footer>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="UTF-8">
+</head>
+<body>
+<header>
+</header>
+<article>
+<h1>[18] Objectgeoriënteerd Programmeren in Javascript</h1>
+<p>Objectgeoriënteerd Programmeren in Javascript werkt conceptueel hetzelfde als in PHP, maar de manier waarop je het in code vormgeeft is nogal anders. 
+</p>
+<p>Een object maken is eenvoudig. De volgende code regel maakt een leeg object aan dat mijnObject heet.
+<pre><code class="language-javascript">mijnObject = { } ;   </code></pre>
+	
+
+Eigenschappen kun je op deze twee verschillende manieren aan een object toevoegen (beide manieren doen hetzelfde):
+<pre><code class="language-javascript">
+mijnObject.naam = “zomaar iets”;
+mijnObject[‘kleur’] = “rood”;   </code></pre>
+	
+
+De tweede methode is bijvoorbeeld handig om alle objecten van een methode te laten zien:
+<pre><code class="language-javascript">for (a in mijnObject) {
+	console.log(a + mijnObject[a]);
+}   </code></pre>
+	
+Dit kan beslist niet met de eerste methode.</p>
+<p>
+Methoden kun je ook toevoegen aan een object door er een <b>anonieme functie</b> aan toe te kennen, op deze manier:
+<pre><code class="language-javascript">mijnObject.tonen = function() { 
+	console.log(this.naam);
+}   </code></pre>
+	
+De functie zelf heeft geen naam, maar je kent hem toe aan een methodenaam in een object. Deze techniek die voor wie het anders gewend is soms even wennen.</p>
+
+<p>Het is ook mogelijk om eigenschappen en attributen in één keer in een soort object model te gieten:
+<pre><code class="language-javascript">function mijnObject(naam, kleur) {
+	this.naam = naam || “onbekend”,
+	this.kleur = kleur || “onbenoemd”,
+	this.tonen = function() {
+		console.log(this.naam);
+	}
+}   </code></pre>
+Let op een paar kleinigheden die belangrijk zijn: iedere eigenschap/methode wordt van de anderen gescheiden door een KOMMA, en niet een PUNTKOMMA. En op de tweede regel van de objectdefinitie zie je een voorbeeld van een defaultwaarde die toegekend wordt als een parameter (bijvoorbeeld naam) ‘false’ (= niet ingevuld) is.</p>
+<p>
+Deze functie werkt pas als je op deze manier een objectinstantie aanmaakt:
+<pre><code class="language-javascript">g = new mijnObject();
+g.tonen(); // ‘onbekend’omdat de naam in de declaratie ontbrak
+
+h = new mijnObject(“zomaar een waarde”);
+h.tonen(); // ‘zomaar een waarde’;   </code></pre>
+	
+</p>
+<h3>Voor gevorderden en liefhebbers: prototypen van klassen</h3>
+<p>Het nadeel van de objectdefinitie die hierboven gebruikt wordt is dat methoden die helemaal geen nieuwe waarden geven aan attributen bij ieder nieuw object apart in het geheugen worden opgeslagen. Onnodig, want ze zijn voor ieder object 100% hetzelfde. Je kunt dat voorkomen door voor een object een prototype te benoemen. Op deze manier:
+<pre><code class="language-javascript">mijnObject.prototype.tonen() {
+	console.log(this.naam + “  “ + this.kleur);
+};
+   </code></pre>	
+
+Deze methode mag dan niet opduiken in de ‘normale’ objectdefinitie. Als in runtime voor een concreet object de methode tonen() wordt aangeroepen kijkt Javascript eerst of het voor dat object definieerd is, en als dat niet zo is of het in het prototype van het object voorkomt. Door het gebruik van this in de definitie van de prototype definitie wordt voor de concrete attributen de concrete waarde van een object ingevuld. Die bestaan natuurlijk niet in een prototype, maar dat hoeft ook niet.</p>
+<p>
+
+Het complete voorbeeld wordt dan:
+<pre><code class="language-javascript">function mijnObject(naam,kleur) {
+	this.naam = naam || "onbekend",
+  this.kleur = kleur || "onbenoemd"
+}
+
+/* de prototype methode */
+mijnObject.prototype.tonen = function() {
+    console.log(this.naam + " " + this.kleur);
+}
+
+/* de objecten aan maken */
+g = new mijnObject();
+g.tonen();
+
+h = new mijnObject("zomaar een waarde");
+h.tonen(); // ‘zomaar een waarde’;   </code></pre>
+
+
+</p>
+<p>Dingen om uit deze paragraaf mee te nemen zijn vooral:
+	<ul>
+		<li>hoe herken je in JS een object?</li>
+		<li>wat is een anonieme functie?</li>
+		<li>wat is een prototype?</li>
+	</ul>
+</p>
+
+
+
+
+</article>
+<footer>
+
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
+</body>

@@ -9,78 +9,49 @@
 <header>
 </header>
 <article>
-
-<h2>[13] Strings, Arrays en Objects (kort door de bocht)</h2>
-<p>JS kent net als PHP (en alle andere algemene programmeertalen) variabelen van het type 'string' (= een reeks tekens). 
-<pre><code class="language-javascript">
-var startzin = "Het was koud, bitter koud.";
-</code></pre>
-Enkele of dubbele aanhalingstekens maakt JS niets uit. In PHP heb je dubbele aanhalingstekens nodig als je in een string een variabelenaam in runtime wilde vervangen door de waarde van die variabele. In JS bestaat dat niet. Als je in een JS string een variabele naam opneemt zal alleen die naam en niet de waarde afgedrukt worden. Wil je de waarde afdrukken dan moet je zo iets doen:
-<pre><code class="language-javascript">
-var auteur = "W.G. van der Hulst";
-console.log("geschreven door " + auteur + ".");
-</code></pre>
-<p>Deze stringconcatenatie wordt in PHP door de . gedaan, hier dus door de +.
-Net als bij PHP moet je ieder aanhalingsteken dat onderdeel is van een string door een escape teken laten voorafgaan:
-<pre><code class="language-javascript">
-var naam = 'Maarten \'t Hart';
-console.log(naam);
-</code></pre>
-
-Overigens: dit werkt ook:
-<pre><code class="language-javascript">
-var naam = "Maarten 't Hart";
-console.log(naam);
-</code></pre>
-<p>Net als bij PHP kun je losse letters in een string benaderen via een rugnummer (vanaf 0):
-	<pre><code class="language-javascript">
-	console.log(naam[2] + naam[6]);  => levert a en n op
-	</code></pre>	
-</p>
-<p>Een hele reeks gespecialiseerde string functies maken het mogelijk ieder onderdeeltje van een string te benaderen, splitten en in hoofdletters te veranderen en strings van voor tot achter en omgekeerd te doorzoeken op het voorkomen van letters of kleinere strings. Zie hiervoor de documentatie op (bijvoorbeeld W3schools). 
-	<ul>
-		<li>string.length</li>
-		<li>string.search("speld"); => positie van "speld" in de string</li>
-		<li>string.slice(s,e) => haalt stukje van positie s(tart) tot positie e(ind) op uit de string</li>
-		<li>string.replace("boerenkool","zuurkool"); => vervangt eerstgenoemde door laatstgenoemde in string. Ook bruikbaar met reguliere expressies (zie later).</li>
-		<li>string.match(regex) => retourneert een array met alle keren dat de regex voorkomt in string.</li>
-		
-	</ul>
-</p><p>
-Arrays en Objecten liggen in JS heel dicht bij elkaar. Heel kort door de bocht zou je kunnen zeggen dat het er de schijn van heeft dat objecten in JavaScript heel erg lijken op de associatieve arrays die PHP kent en de Arrays in JS vergelijkbaar zijn met de niet-associatieve arrays van PHP:    
-<br>
-Array:
-<pre><code class="language-javascript">
-var dagen = ["maandag", "dinsdag", "woensdag"];
-console.log(dagen[2]); => levert woensdag op
-</code></pre>
-
-<br>
-Object:
-<pre><code class="language-javascript">
-var auto = { merk:"Opel", type:"Vectra"};
-console.log(auto.merk); => levert "Opel" op
-</code></pre>
-Let in dit laatste geval op de . notatie waarmee je attributen van een object kunt benaderen.</p>
-<p>
-Voor zowel arrays als objecten zijn er weer een range van handige functies, bijvoorbeeld voor sorteren en dergelijke. Zie de documentatie. Speciale aandacht voor de functie toString: deze functie maakt van de inhoud van een array (of object) een complete string. Dit lijkt een beetje op de print_r functie van PHP en is dus o.a. handig bij debuggen.
+<h2>17. Herhalingen</h2>
+<p>Herhalingsopdrachten laten je programma bepaalde instructies zolang herhalen als het moet. Een groep instructies die herhaalt wordt noemen we vaak een 'loop' (uitspreken als 'loep' - op zijn Engels). Bij <b>alle</b> herhalingen moet je altijd drie dingen weten:
 <ul>
-	<li>array.length => rapporteert het aantal elementen in een array</li>
-	<li>array.toString(); => toont array als één string</li>
-	<li>array.pop() => verwijdert en retourneert het laatste element van de array </li>
-	<li>array.push() => voegt aan het eind een nieuw element toe.</li>
-	<li>array.shift() => verwijdert en retourneert het eerste element van de array</li>
-	<li>array.unshift() => voegt element aan begin toe, andere elementen schuiven op</li>
-	<li>array.splice(s,a,nieuwe waarden) => voegt vanaf positie s nieuwe elementen toe en verwijdert a oude elementen. (a=0 betekent dus invoegen midden in een array)</li>
-	<li>array.slice(s) => snijdt vanaf positie s de elementen uit de oude array weg in een nieuwe array</li>
-	<li>array.sort() => sorteert a-z</li>
-	<li>array.reverse() => sorteert z-a</li>
-	<li>enz...</li>
-</ul>	
+	<li>Hoe hou ik bij hoevaak iets herhaald is (de teller)?</li>
+	<li>Wanneer moet de herhaling stoppen (de eindtest)?</li>
+	<li>Hoe verandert de teller iedere keer als er een herhaling gedaan is?</li>
+</ul>
+We spreken van een oneindige loop als de eindtest nooit gehaald zal worden.</p>
+<p>Er zijn drie commando's in javascript die je opdrachten laten herhalen: FOR , WHILE en DO/WHILE.</p>
+<p>Het for commando herhaalt een groep instructies een aantal keren en in de aanroep van het for commando herken je de drie hierbovengenoemde punten: de teller (met de startwaarde), de eindtest en de verandering van de teller:
+<pre><code class="language-javascript">
+for (i = 0; i < 5; i++) {
+	text += "The number is " + i + "<br>";
+}</code></pre>
+De teller is hier i, de teller start bij 0 en gaat net zolang door totdat de teller gelijk is aan 5. Iedere keer dat de instructies lopen wordt de teller 1 verhoogd (i++);
+</p>
+<p>Bij het While commando wordt in de aanroep van While alleen de eindtest genoemd. Dat betekent dat je als programmeur er zelf voor moet zorgen dat de andere twee aandachtspunten (wat is de teller en hoe verandert de teller bij iedere loop?) voor elkaar zijn. Deze code voert hetzelfde uit als de for loop hierboven:
+<pre><code class="language-javascript"> 
+var i = 0;
+while (i < 5) {
+	text += "The number is " + i + "<br>";
+	i++;
+}</code></pre>
+Mocht je bijvoorbeeld de i++ in de loop vergeten dan kan je zomaar met een oneindige loop te maken krijgen. Soms is dat de bedoeling, bijvoorbeeld bij een alarm. 
+<pre><code class="language-javascript"> 
+var alarm = false;
+while (!alarm) {
+	alarm=controleer_deur();
+}</code></pre>
+Hierbij wordt verondersteld dat de functie controleer_deur de waarde <b>true</b> afgeeft als iemand de deur open doet. Als niemand de deur aanraakt blijft de While loop dus lang doorlopen..
+</p>
+<p>Het commando DO / WHILE lijkt heel veel op WHILE maar het kenmerkende verschil is dat bij DO / WHILE de loop code altijd Ã©Ã©n keer wordt uitgevoerd voordat de eindtest wordt uitgevoerd. Soms heb je dat nodig voor het zetten van bepaalde variabelen. Deze code voert weer hetzelfde uit als de FOR en WHILE hierboven:
+<pre><code class="language-javascript"> 
+var i = 0;
+do {
+	text += "The number is " + i + "<br>";
+	i++;
+} while (i<5);
+</code></pre>
+
 
 </p>
-
-
+	
 
 </article>
 <footer>

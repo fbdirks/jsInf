@@ -9,38 +9,39 @@
 <header>
 </header>
 <article>
-<h1>[5d] Andere basissyntax</h1>
-<p>De basissyntax van javascript is niet moeilijk. </p>
-<p>Iedere JS regel wordt afgesloten met een ;  om aan te geven dat het commando klaar is. </p>
+<h1>8. Variabelen</h1>
+<p>In alle programmeertalen zijn variabelen van groot belang. Variabelen zijn stukjes geheugen waar je iets in kunt opslaan die je zelf een naam geeft. Door die naam te gebruiken kun je gegevens opslaan of ophalen uit het geheugen. Voorbeeld:</p>
+<pre>
+<code class="language-javascript">
+	Var leeftijd = 18;
+	console.log(“De leeftijd is “ + leeftijd);</code>
+</pre>
+<p>Als je een variabele voor de eerste keer gebruikt moet je de variabele ‘aanmelden’ bij javascript. Dit heet declareren. Je doet dit met het var commando:</p>
+<pre>
+<code class="language-javascript">
+	var test = 9;
+	var naam;
+</code>
+</pre>
+<p>In het tweede geval is de variabele wel aangemeld maar heb je er nog niets ingestopt. Dat komt dan later wel.</p>
+<p>Met de ‘scope’ van een variabele bedoelen we het geldigheidsbereik. Als je een variabele meteen na de &lt;script&gt; tag declareert kan heel je JS code (ook de functies die je misschien schrijft) er gebruik van maken. We zeggen dan wel eens dat deze variabele een 'global scope' heeft (overal geldig). Als je een variabele binnen een functie declareert en gebruikt is deze variabele alleen maar binnen die functie geldig. Dit noemen we wel 'local scope'.</p>
 <pre><code class="language-javascript">
-var x = "deze regel is niet af"
-var y = "deze regel is wel af";
-</code></pre>
-<p>Aanhalingstekens " en ' mag je beiden gebruiken en hebben beiden hetzelfde effect. Je mag ze niet mixen. Dit mag dus wel:  test = "hallo"  of test = 'Hallo', maar dit niet:  test = "Hallo'.</p>
-<pre><code class="language-javascript">
-var groet = "hans";
-groet = 'hans';
-groet = "hans'; // dit is niet correct (let op de syntaxkleuren)
-</code></pre>
-<p>JS is hoofdlettergevoelig. Een variabele test is dus niet hetzelfde als de variabele Test. <p>
-<pre><code class="language-javascript">
-var test = "OK";
-var Test = "Niet OK";
-</code></pre>
-<p>Een blok javascript code regels die bij elkaar horen kun je tussen accolades zetten: {  } . Het aantal regels dat tussen accolades mag staan is in principe onbeperkt. </p>
-<pre><code class="language-javascript">
-{
-	console.log("blok 1");
-	x++;
+var getal = 10; // deze variabele is OVERAL bruikbaar op deze pagina. 'globale' scope
+
+function verdubbel() {
+	getal = getal * 2; // Dit werkt omdat deze variabele de 'globale' scoop heeft.
 }
 
-</code></pre>
-<p>console.log() print iets uit naar de javascript console. Die kun je in een browser meestal openen door F12 in te drukken. (Op school werkt dat niet altijd..)</p>
-<p>Op deze manier kun je de inhoud van een variabele printen: 
-<pre><code class="language-javascript">console.log("in variabele x zit: " + x);</code></pre>
-<p>Debuggen van een programma betekent vooral: je programma tegen je laten praten. Door op allerlei punten console.log commando’s in te bouwen kun je nagaan waar precies de uitvoering van je programma spaak loopt.</p>
-<p>Het is altijd een goed idee om als een programma helemaal goed loopt overbodige debugregels weg te halen. Een methode kan zijn er commentaartekens voor te zetten. Je bent ze dan niet kwijt, ze doen het alleen niet meer.</p>
+function verdubbel2() {
+	var anderGetal = 4;// Deze variabele is alleen bruikbaar in deze functie! 'local scope'
+	anderGetal = anderGetal * 2;
+}
 
+console.log(anderGetal); // Dit zal niet werken omdat deze variabele niet bekend is in de global scope.
+</code></pre>
+<p>Naamgeving van variabelen is in principe vrij. Kies altijd namen die duidelijk maken waarom of waarvoor je dat geheugen nodig hebt. Als je na een paar maanden weer naar oude programmacode kijkt zul je daar dankbaar voor zijn. Het is niet mogelijk om javascript opdrachten te gebruiken als naam van een variabele:
+<pre><code class="language-javascript">Var for = 10 ;</code></pre>
+is dus niet mogelijk!</p>
 
 
 </article>

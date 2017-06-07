@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="UTF-8">
+</head>
+<body>
+<header>
+</header>
+<article>
+<h2>22. Formulier validatie</h2>
+<p>Formuliervalidatie omvat het controleren van de gegevens die gebruikers in webformulieren hebben ingevoerd voordat deze gegevens verwerkt worden. Is er een geldig email adres of telefoonnummer ingevoerd? Is het wachtwoord lang genoeg? Zijn alle noodzakelijke gegevens ook werkelijk ingevoerd en is niets vergeten? Formulier validatie kan op meerdere manieren geregeld worden, en het is vaak zelfs verstandig om dat ook te doen.
+HTML 5 heeft nieuwe invoertypes die een ruwe controle uitvoeren op de aanwezigheid en de vorm van ingevoerde gegevens of die een bepaalde invoer afdwingen (input type="number" bijvoorbeeld). Waar dat kan is het altijd een goed idee om deze mogelijkheden te gebruiken, ook al gaat het hier altijd om een ruwe controle.</p>
+<p>Javascript kan ingezet worden om een meer gedetailleerde controle op de ingevoerde gegevens uit te voeren dan deze nieuwe HTML mogelijkheden. Omdat deze controle veel beter afgestemd kan worden op de eisen van het systeem en de gebruiker ook sneller feedback geeft over verkeerde of ontbrekende gegevens is dit in serieuze informatiesystemen altijd een goed idee.</p>
+<p>PHP of een andere programmeertaal aan de serverkant kunnen gebruikt worden om de gegevens (nog een keer) te controleren voordat ze werkelijk door de server verwerkt worden. <i>Het is een goed idee om dit hoe dan ook altijd te doen omdat Javascript door een gebruiker altijd uitgezet of gemanipuleerd kan worden.</i> </p>
+<p>In het voorbeeld hieronder staat een klein formulier waarin een gebruiker een usernaam kan invoeren (minimaal 6, maximaal 20 tekens), een wachtwoord (minstens 2 hoofdletters, 2 gewone tekens 2 cijfers en 1 bijzonder teken  en in totaal minstens 10 tekens) een leeftijd en een emailadres.  Het voorbeeld zal laten zien hoe je met behulp van HTML5 en Javascript aan de clientkant de invoer kunt controleren. Daarbij wordt o.a. gebruik gemaakt van regular expressions.
+</p>
+<p>Na het correct invoeren van de gegevens rapporteert de serverkant nog even wat de server doorgekregen heeft.</p>
+<p>Het formulier, zowel de werkende versie als de code:</p>
+<div class="demoform">
+<form id="formulier"  action="vervolg.php" method="post">
+	
+	<label for="naam">Naam:</label><br>
+	<input type="text" name="naam"><br>
+	<label for="password">Wachtwoord:</label><br>
+	<input type="password" name="password"><br>
+	<label for="leeftijd">Leeftijd:</label><br>
+	<input type="text" name="leeftijd"> <br>
+	<label for="emailadres">Emailadres:</label><br>
+	<input type="text" name="emailadres"><br>
+	<input type="submit" name="invoeren" value="invoeren">
+	<input type="reset" name="wissen" value="wissen"><br>
+	
+</form>
+</div>
+<pre><code class="language-markup"><script type="prism-html-markup">
+<form id="formulier"  action="vervolg.php" method="post">
+	
+	<label for="naam">Naam:</label><br>
+	<input type="text" name="naam"><br>
+	<label for="password">Wachtwoord:</label><br>
+	<input type="password" name="password"><br>
+	<label for="leeftijd">Leeftijd:</label><br>
+	<input type="text" name="leeftijd"> <br>
+	<label for="emailadres">Emailadres:</label><br>
+	<input type="text" name="emailadres"><br>
+	<input type="submit" name="invoeren" value="invoeren">
+	<input type="reset" name="wissen" value="wissen"><br>
+	
+</form>
+</script></code></pre>
+<p>Via deze javascriptcode kan de invoer van de gebruiker gecontroleerd worden voordat het aan de server wordt doorgegeven:
+	<pre><code class="language-javascript">
+	// voor het gemak koppelen we het formulier aan een variabele.
+	var formulier = document.getElementById("formulier");
+
+	// we koppelen een javascript functie aan het submit event.
+	formulier.addEventListener("submit" , controleren);
+
+	// in deze functie gaan we de ingevoerde waarden controleren,
+	// als de waarden niet goed zijn wordt de submit naar PHP niet geactiveerd.
+	function controleren(e) {
+		// ophalen van de ingevulde waarden.
+		var naam = formulier["naam"].value;
+		var ww = formulier["password"].value;
+		var leeftijd = formulier["leeftijd"].value;
+		var email = formulier["emailadres"].value;
+		
+		// de variabele doorgaan beslist uiteindelijk of de invoer naar de server mag doorgaan.
+		var doorgaan = true;
+		
+		// de variabele melding bouwt de foutmelding op.
+		var melding = "De volgende fouten zijn geconstateerd:\n";
+		
+		
+		// usernaam
+		console.log(naam);
+		if (naam=="") {
+			melding += "- usernaam is leeg\n";
+			doorgaan = false;
+		} else if (naam.length < 6) {
+			melding += "- usernaam is te kort\n";
+			doorgaan = false;
+		} else if (naam.length > 20) {
+			melding += "- usernaam is te lang\n";
+			doorgaan = false;
+		}
+		
+		// wachtwoord
+		if (ww=="") {
+			melding += "- wachtwoord is leeg\n";
+			doorgaan = false;
+		} else if (ww.length<10) {
+			melding += "- wachtwoord is te klein\n";
+			doorgaan = false;
+		} else {
+			// de variabele vlag houdt bij of er iets in de opbouw van een wachtwoord niet klopt
+			var vlag = true;
+						
+			// tellen van de hoofdletters via Regular Expressions
+			var countHl = (ww.match(/[A-Z]/g) || []).length;
+			if(countHl<2) {
+				vlag = false;
+			}
+			
+			// tellen van de kleine letters (ook RegEx)
+			var countKl = (ww.match(/[a-z]/g)|| []).length;
+			if(countKl<2) {
+				vlag = false;
+			}
+			
+			// tellen van de cijfers (ook RegEx)
+			var countCy = (ww.match(/[0-9]/g) || []).length;
+			if(countCy<2) {
+				vlag = false;
+			}
+			
+			// tellen van de speciale tekens (ook RegEx)
+			// NB: er wordt gekeken naar de tekens & ! ? % ^ # @ _ -
+			var countSp = (ww.match(/[&!?$%^#@_-]/g) || []).length;
+			if(countSp<2) {
+				vlag = false;
+			}
+			
+			// als de vlag op 'false' is gezet klopte de opbouw niet
+			if (!vlag) {
+				console.log(ww);
+				melding += "Wachtwoord heeft geen goede samenstelling";
+				doorgaan = false;
+			}
+		}
+		
+		// leeftijd
+		if (leeftijd=="") {
+			melding += "- leeftijd is niet ingevuld\n";
+			doorgaan = false;
+		} else if (leeftijd < 0) {
+			melding += "- leeftijd kan niet negatief zijn\n";
+			doorgaan = false;
+		} else if (leeftijd > 110) {
+			melding += "- leeftijd is onwaarschijnlijk hoog\n";
+			doorgaan = false;
+		}
+		
+		// emailadres (zie ook de pagina over reguliere expressies
+		if (email=="") {
+			melding += "- emailadres is niet ingevuld.\n";
+			doorgaan = false;
+		} else {
+			var patroon = /^[a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,4}$/; // de reguliere expressie die hoort bij een email adres
+			if(!patroon.test(email)) {
+				melding += "- geen geldig emailadres";
+				doorgaan = false;
+			}
+		}
+		
+			
+		
+		// als ergens een fout in de invoer zit wordt dit gemeld en wordt de invoer gestopt.
+		if (!doorgaan) {
+			alert(melding);
+			e.preventDefault();  // Dit is de regel die het doorsturen van de gegevens naar de server blokkeert als er iets niet klopt.
+		}
+	
+	}
+	</code></pre>	
+	
+	
+</p>
+<p>Het controleren van userinvoer is niet altijd een vreugdevolle bezigheid. Maar het voorkomt wel dat er allerlei verkeerde dingen naar de server worden doorgestuurd die een informatiesysteem kreupel zouden kunnen maken. Er gaat veel tijd in zitten, maar in het herstellen van de fouten die je krijgt als je hier niet op controleert gaat meer tijd zitten.</p>
+</article>
+<footer>
+
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+	
+	/*
+		Met opzet is in het onderstaande script geen gebruik gemaakt van 
+		de jQuery bibliotheek. De benoemde functies en variabelen werken
+		allemaal ook standaard in javascript.
+	*/
+	
+	// voor het gemak koppelen we het formulier aan een variabele.
+	var formulier = document.getElementById("formulier");
+
+	// we koppelen een javascript functie aan het submit event.
+	formulier.addEventListener("submit" , controleren);
+
+	// in deze functie gaan we de ingevoerde waarden controleren,
+	// als de waarden niet goed zijn wordt de submit naar PHP niet geactiveerd.
+	function controleren(e) {
+		var naam = formulier["naam"].value;
+		var ww = formulier["password"].value;
+		var leeftijd = formulier["leeftijd"].value;
+		var email = formulier["emailadres"].value;
+		var doorgaan = true;
+		var melding = "De volgende fouten zijn geconstateerd:\n";
+		
+		// usernaam
+		console.log(naam);
+		if (naam=="") {
+			melding += "- usernaam is leeg\n";
+			doorgaan = false;
+		} else if (naam.length < 6) {
+			melding += "- usernaam is te kort\n";
+			doorgaan = false;
+		} else if (naam.length > 20) {
+			melding += "- usernaam is te lang\n";
+			doorgaan = false;
+		}
+		
+		console.log("Na naamscontrole:" + melding);
+		
+		// wachtwoord
+		if (ww=="") {
+			melding += "- wachtwoord is leeg\n";
+			doorgaan = false;
+		} else if (ww.length<10) {
+			melding += "- wachtwoord is te klein\n";
+			doorgaan = false;
+		} else {
+			var countHl = (ww.match(/[A-Z]/g) || []).length;
+			var countKl = (ww.match(/[a-z]/g)|| []).length;
+			var countCy = (ww.match(/[0-9]/g) || []).length;
+			var countSp = (ww.match(/[&$%^#@_-]/g) || []).length;
+			/*
+			console.log("hoofdletters: " + countHl);
+			console.log("kleineletters: " + countKl);
+			console.log("cijfers: " + countCy);
+			console.log("speciale tekens: " + countSp);
+			*/
+			var vlag = true;
+			if(countHl<2) {
+				vlag = false;
+			}
+			if(countKl<2) {
+			
+				vlag = false;
+			}
+			if(countCy<2) {
+			
+				vlag = false;
+			}
+			if(countSp<2) {
+				console.log("speciale tekens: " + countSp);
+				vlag = false;
+			}
+			if (!vlag) {
+				console.log(ww);
+				melding += "Wachtwoord heeft geen goede samenstelling";
+				doorgaan = false;
+			}
+		}
+		
+		// leeftijd
+		if (leeftijd=="") {
+			melding += "- leeftijd is niet ingevuld\n";
+			doorgaan = false;
+		} else if (leeftijd < 0) {
+			melding += "- leeftijd kan niet negatief zijn\n";
+			doorgaan = false;
+		} else if (leeftijd > 110) {
+			melding += "- leeftijd is onwaarschijnlijk hoog\n";
+			doorgaan = false;
+		}
+		
+		// emailadres (zie ook de pagina over reguliere expressies
+		if (email=="") {
+			melding += "- emailadres is niet ingevuld.\n";
+			doorgaan = false;
+		} else {
+			var patroon = /^[a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,4}$/; // de reguliere expressie die hoort bij een email adres
+			if(!patroon.test(email)) {
+				melding += "- geen geldig emailadres";
+				doorgaan = false;
+			}
+		}
+		
+		
+		
+		// als ergens een fout in de invoer zit wordt dit gemeld en wordt de invoer gestopt.
+		if (!doorgaan) {
+			alert(melding);
+			e.preventDefault();
+		}
+	
+	}
+		
+
+});
+	
+	
+
+
+</script>
+</body>

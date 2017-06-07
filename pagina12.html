@@ -9,17 +9,29 @@
 <header>
 </header>
 <article>
-<h2>Opdracht: bouw een rekenmachine</h2>
-<p>We bouwen een simpele rekenmachine. Dit is de code van de webpagina op dit moment:</p>
+<h1>12. Hoe verander je een specifiek HTML element met Javascript?</h1>
+<p>Met Javascript kun je vrijwel ieder HTML element beinvloeden. Je kunt bijvoorbeeld de opmaak (kleur), de inhoud of de zichtbaarheid veranderen. Voor nu kijken we alleen even naar het veranderen van een heel specifiek HTML element. Je kunt een specifiek HTML element alleen maar veranderen als dat element een ‘id’ heeft:</p>
+
+<pre><code class="language-html">&lt;span id=”melding”&gt;&lt;/span&gt;</code></pre>
+<p>De volgende functie plaatst de tekst “Pas op!” in deze &lt;span&gt; tag:
+<pre><code class="language-javascript">
+	function uitkijken() {
+		document.getElementById("melding").innerHTML = "&lt;i&gt;Pas op!&lt;/i&gt;";
+	}
+</code></pre>
+Het groene gedeelte van de regel die met document begint is verplicht en betekent eigenlijk “Zoek op deze webpagina naar een element dat het volgende ID heeft”. Het deel tussen haakjes bevat dat ID en het deel na de = (innerHTML) geeft aan dat je de inhoud daarvan wilt veranderen Je mag hierin html tags gebruiken.</p>
+<p>Merk op dat de tekst die achter de = zet in zijn geheel tussen " " moet staan. </p>
+<p>Je kunt ook style elementen veranderen met een functie. Dat ziet er maar een klein beetje anders uit:
+<pre><code class="language-javascript">
+	function rode_waarschuwing() {
+		document.getElementById("melding").style.color = "red";
+	}
+</code></pre>
+ Je kunt ook heel goed beide opdrachten in één functie zetten.</p>
 
 
-<pre data-src="p10_rekenmachine.html"> </pre>
 
-<p>In deze code wordt gebruik gemaakt van variabelen, dat is geheugen met een naam. Als je zo’n geheugen wilt gebruiken moet je het als je het de eerste keer noemt vooraf laten gaan door het woord var gevolgd door de naam en na de = door datgene wat je in die geheugenplaats wilt stoppen. Daarna kun je die naam steeds overal gebruiken om wat met die waarde te doen. Kijk maar naar het voorbeeld.</p>
 
-<p>Neem de code over en zorgt dat het in ieder geval voor optellen werkt.</p>
-<p>Zorg ervoor dat je met de rekenmachine ook kunt aftrekken, vermenigvuldigen en delen.</p>
-<p>Zoek in W3schools op hoe je in Javascript kunt afronden en probeer je rekenmachine zo in te stellen dat deze altijd op 2 decimalen afrondt.</p>
 
 
 

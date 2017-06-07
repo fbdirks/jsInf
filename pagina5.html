@@ -9,21 +9,39 @@
 <header>
 </header>
 <article>
-
-<h1>[5] Wat zijn functions?</h1>
-<p>Functions zijn (meestal) kleine Javascript programma’s die een bepaalde actie uitvoeren op een webpagina of in een ander stuk javascript. In een Javascript gedeelte van een webpagina kunnen gerust meerdere functions gedefinieerd worden. Een function herken je aan deze vorm:</p>
-<pre>
-<code class="language-javascript">
-function mijnfunctie() {
-	alert(“Dit is mijn functie”);
-}
-</code>
-</pre>
-<p>We zullen later zien wat die () in de naam van de functie betekenen en wat je er nog meer mee kan doen dan alleen maar neerzetten. Merk op dat de JS opdrachten die uitgevoerd moeten worden altijd tussen { }  staan en dat iedere regel in zo’n blok afgesloten wordt door een ; . </p>
-
-
-
-
+  <h1>5. Hoe praat JS met je?</h1>
+  <p>De interface van een JS programma wordt verzorgd door HTML, bijvoorbeeld door een formulier en door een juiste naam- en id-geving van elementen op de pagina. Via het DOM model kan JS bij ieder HTML/CSS element dat op de juiste manier te identificeren valt de eigenschappen of waarden beïnvloeden. Zie de paragraaf over het DOM model.</p>
+  <p>Hier zie je vier (vijf eigenlijk) manieren waarop Javascript zijn uitvoer kwijt kan:</p>
+<h4>1: Veranderen van de inhoud van HTML elementen op de pagina</h4>
+<p>Hier verandert Javascript de HTML code die wordt omsloten door een specifieke tag:
+<pre><code class="language-javascript">var melding = “Goedenacht!”;
+document.getElementById(“melding”).innerHTML = melding;</code></pre>
+<h4>2: veranderen van de complete inhoud van een pagina</h4>
+Daarnaast kan de JS output door de browser als een complete webpagina worden opgevat (document.write()).
+<pre><code class="language-javascript">var melding = “Goedemorgen!”;
+document.write(melding);
+</code></pre>
+<h4>3: Uitvoer van informatie naar een popup scherm</h4>
+Via een alert() kan er ook een popup scherm worden getoond.
+<pre><code class="language-javascript">
+var melding = “Goedemiddag!”;
+alert(melding);
+</code></pre>
+<h4>4: Uitvoer naar de <i>console</i></h4>
+Via console.log() kan er geschreven worden naar de Javascript console die in een browser geopend kan worden (bijvoorbeeld met F12). Dit is meer iets voor ontwikkelaars. Deze vorm van output is niet geschikt voor gewone gebruikers die een webpagina willen bekijken.
+<pre><code class="language-javascript">
+var melding = “Goedeavond!”;
+console.log(melding);
+</code></pre>
+</p>
+<p>
+<h4>5: Uitvoer naar het werkscherm van een andere applicatie</h4>
+<p>Als je Javascript gebruikt voor het automatiseren van applicaties zul je in de documentatie van deze applicaties moeten kijken naar de manier waarop je bij die applicatie output daar kunt krijgen waar je wilt. Dit is een voorbeeld van UltraEdit (een programmeurs teksteditor).
+<pre><code class="language-javascript">
+var melding = "Ook goededag!";
+UltraEdit.activeDocument.write(melding);
+</code></pre>
+Dit is een mooi voorbeeld van een objectbibliotheek die wel verschilt van Javascript maar er toch ook weer heel erg op lijkt.</p>
 </article>
 <footer>
 
@@ -43,4 +61,3 @@ $( document ).ready(function(){
 });
 </script>
 </body>
-</html>

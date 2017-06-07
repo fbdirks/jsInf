@@ -9,17 +9,22 @@
 <header>
 </header>
 <article>
-<h1>[6] Hoe start je een function?</h1>
-<p>Een function wordt gestart door een 'event', een gebeurtenis. Een heel goed te snappen event is het klikken op een knop. Een knop kan op een HTML pagina zo gedefinieerd worden:
-<pre><code class="language-javascript">&lt;button onclick="mijnfunctie()"&gt;Klik mij&lt;/button&gt;</code></pre>
-Het rode gedeelte is het gedeelte waarin wordt gezegd wat er moet gebeuren bij een klik op de knop, in dit geval is dat dus het starten van de JS function 'mijnfunctie'.</p>
-<p>
-Een ander goed te snappen event is het onload event in de &lt;body&gt;. Onload is het event dat gestart wordt als een pagina helemaal geladen is. Dus:
-<pre><code class="language-javascript">&lt;body onload="groetjes()"&gt;</button></code></pre>
-betekent dus dat de Javascript function ‘groetjes’ gestart moet worden als deze pagina helemaal geladen is. </p>
-<p>Er zijn nog veel meer events, in totaal meer dan 50. Ze zijn niet allemaal belangrijk maar we gaan er wel een aantal kennen leren de komende tijd.</p>
-
-
+<h1>9. Commentaar</h1>
+<p>Je kunt in JS code commentaar noteren die jou of iemand anders die de code leest misschien kan helpen de code beter te begrijpen. Commentaarregels worden door Javascript volledig genegeerd, ze worden niet uitgevoerd. Er zijn vooral twee soorten commentaar:
+Één regel commentaar:
+<pre><code class="language-javascript">// dit is een 1-regelig commentaar</code></pre>
+Meer regels commentaar:
+<pre><code class="language-javascript">
+	/* 
+		Dit is meerregelig commentaar.
+		Zoveel regels als maar nodig zijn.
+	*/
+</code></pre>
+Een handige toepassing van commentaar is het ‘uitzetten’ van bepaalde code regels om te voorkomen dat ze worden uitgevoerd. In dit voorbeeld is de tweede regel op die manier even ‘uitgezet’:
+<pre><code class="language-javascript">
+	Var test = 10;
+	// console.log("Test = " + test);
+</code></pre>
 
 </article>
 <footer>

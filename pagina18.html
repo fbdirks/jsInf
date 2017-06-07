@@ -9,96 +9,48 @@
 <header>
 </header>
 <article>
-
-<h2>[14] Reguliere Expressies</h2>
-<p>Met behulp van Regular Expressions kun je onderzoeken of een string voldoet aan een patroon. Is een ingevoerde postcode wel correct? Is een ingevoerd emailadres wel een geloofwaardig emailadres? De ‘reguliere expressie’ is datgene wat het patroon beschrijft. Het klassieke (en redelijk ingewikkelde) voorbeeld is het controleren van (de geloofwaardigheid van ) een emailadres.
-</p><p>
-Een emailadres bestaat uit drie logisch te onderscheiden stukken:
-<ul>
-	<li>het gedeelte voor de @ waarin letters, cijfers, speciale tekens en punten mogen voorkomen</li>
-	<li>het eerste gedeelte na de @ waarvoor bijna hetzelfde geldt</li>
-	<li>het laatste gedeelte waar de top-level domeinnaam staat dat maar uit 2 tot 4 tekens kan bestaan.</li>
+<h2>18. Rekenen</h2>
+<p>JS kent dezelfde mathematische kernoperatoren als de meeste andere programmeertalen en rekenmachines. Dus:
+	<ul>
+		<li>uitkomst = 34 + 12; // som 46</li>
+		<li>uitkomst = 22 - 8; // verschil 14</li>
+		<li>uitkomst = 2 * 3; // vermenigvuldiging 6</li>
+		<li>uitkomst = 15 / 4; // deling, 3.75</li>
+		<li>uitkomst = 15 % 4 ; // restdeling, 3 dus</li>
 </ul>
-info@greijdanus.nl  bijvoorbeeld
+<p>Onder een 'shorthand' operator verstaan we een bewerking die een verkorte vorm van opschrijven kent naast de 'normale' langere vorm. Als we bijvoorbeeld bij de variabele teller 1 willen optellen kunnen we dat zo doen:
+<pre><code class="language-javascript">teller = teller + 1   </code></pre>
+De = betekent hier dus eigenlijk 'wordt gelijk aan'. Specifiek voor deze optelling (1 ergens bij optellen), die <i>heel veel</i> voorkomt,  is een verkorte notatie heel gebruikelijk:
+<pre><code class="language-javascript">teller++;   </code></pre>
+De notatie teller-- bestaat ook en is hetzelfde als: teller = teller - 1;
 </p>
-<p>
-Stap 1: een patroon staat altijd tussen twee dezelfde tekens, traditioneel de /  (maar andere tekens zijn mogelijk):
-
-    <pre><code class="language-javascript">
-    var patroon = /                        / ;</code></pre>
-</p><p>
-Stap 2: we noteren het patroon van het begin tot het einde van het mogelijke email adres:
-
-    <pre><code class="language-javascript">
-    var patroon = /^                        $/ ;</code></pre>
-</p><p>
-Stap 3, het eerste deel voor de @:
-  <pre><code class="language-javascript">
-    var patroon = /^[a-z0-9._%-]+       $/;</code></pre>   
-Het deel tussen [ ] geeft aan welke reeksen karakters zijn toegestaan, de + na de [ ] geeft aan dat er 1 of meer van deze tekens mogen voorkomen.
-</p><p>
-Stap 4, na het eerste deel moet een @ teken komen
- <pre><code class="language-javascript">
-    var patroon = /^[a-z0-9._%-]+@       $/;</code></pre>
-</p><p>
-Stap 5, na het @ teken kunnen weer tekens komen, niet alle tekens zijn nu meer toegestaan de _ en % mogen niet in domeinnamen voorkomen. Domeinnamen moeten wel uit minstens 1 letter bestaan. Dus:
- <pre><code class="language-javascript">
-    var patroon = /^[a-z0-9._%-]+@[a-z0-9.-]+       $/;</code></pre>
-</p><p>
-Stap 6, voor het laatste deel moet een . staan. De . betekent in reguliere expressies soms iets als "een willekeurig teken"  maar in email adressen moet de punt letterlijk genomen worden. Zet er een escapeteken voor:
- <pre><code class="language-javascript">
-    var patroon = /^[a-z0-9._%-]+@[a-z0-9.-]+\.       $/;</code></pre>
-</p><p>
-Stap 7: het toplevel domein bestaat uit 2 tot 4 tekens uit de gewone letters (geen cijfers!):
- <pre><code class="language-javascript">
-	var patroon = /^[a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-	var grpatroon = /^[a-z0-9._%-]+@greijdanus\.[a-z]{2,4}$/;</code></pre>
-
-De {2,4} geeft aan dat er minimaal 2, maximaal 4 letters mogen staan.
-</p><p>
-Achter de sluit / kunnen nog wat opties komen te staan bijvoorbeeld de i om de zoektocht hoofdletter ongevoelig te maken.
- <pre><code class="language-javascript">
-    var patroon = /^[a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i;</code></pre>
- </p><p>   
-Je gebruikt deze reguliere expressie op deze manier:
- <pre><code class="language-javascript">
-    patroon.test("info@greijdanus.nl"); => levert true of false op, in dit geval true.
-    patroon.test(ingevuld_email_adres); </code></pre>
-</p>
-<p>
-Oefenopdrachten:
-<ul>
-	<li>wat is het patroon voor een postcode?</li>
-	<li>wat is het patroon voor een mobiel telefoonnummer?</li>
-	<li>wat is het patroon voor een IBAN nummer?</li>
-	<li>wat is het patroon voor het emailadres van een greijdanus leerling?</li>
-	<li>Hoeveel klinkers zitten er in "Appeltaart met slagroom"? (met string.match doen)</li>
-</ul>
-</p>
-<p>
-Slotopmerkingen: PHP kent ook reguliere expressies en eigenlijk iedere andere grote programmeertaal ook. Meestal leunen deze expressies aan tegen de manier waarop de programmeertaal Perl ze heeft ge-implementeerd (PCRE syntax). Er zijn (dikke) boeken vol over geschreven. Ingewikkelde reguliere expressies schrijven is specialistenwerk en er komt veel paracetamol bij kijken.
-</p><p>
-Oefenen met reguliere expressies bijvoorbeeld op:
-<a href="http://regex.larsolavtorvik.com">http://regex.larsolavtorvik.com </a> 
-</p>
-
-
-</article>
-<footer>
-
-</footer>
-<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-  
-<script src="../prism/prism-coy.js"></script>
-<script src="../clip/clipboard.min.js"></script>
-<script src="functies.js"></script>
-<script>
-$( document ).ready(function(){
-	kop();
-	voet();
-});
-</script>
-</body>
+<p>Belangrijke andere 'shorthand' operatoren van javascript zijn:
+<pre><code class="language-javascript">
+prijs *= percentage ; // prijs = prijs * percentage;
+lengte /= 2 ; // lengte = lengte / 2
+bericht += " een toevoeging"; // bericht = bericht + " een toevoeging"
+</code></pre>
+'Shorthand' operatoren hoef je niet te gebruiken. Dus als je je prettiger voelt bij de langere manier van opschrijven is dat prima.</p>
+<p>Voor ingewikkelder mathematische functies, van het berekenen van de wortel tot en met het afronden van resultaten, kent JS de mathematische bibliotheek (deze zit standaard ingebouwd in javascript) die je bijvoorbeeld zo kunt gebruiken:
+<pre><code class="language-javascript">uitkomst = Math.pow(8, 3); // 8 tot de macht 3
+uitkomst = Math.sqrt(64); // de wortel van 64   </code></pre>
+Voor alle mogelijke functies van Math verwijs ik naar de W3schools referentiepagina op <a href="https://www.w3schools.com/jsref/jsref_obj_math.asp">w3schools</a></p>
+	</article>
+	<footer>
+	
+	</footer>
+	<script
+	  src="https://code.jquery.com/jquery-3.2.1.min.js"
+	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	  crossorigin="anonymous"></script>
+	  
+	<script src="../prism/prism-coy.js"></script>
+	<script src="../clip/clipboard.min.js"></script>
+	<script src="functies.js"></script>
+	<script>
+	$( document ).ready(function(){
+		kop();
+		voet();
+	});
+	</script>
+	</body>

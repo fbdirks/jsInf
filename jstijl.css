@@ -6,7 +6,7 @@ body {
 }
 
 article {
-	width: 800px;
+	width: 900px;
 	height: 100%;
 	margin: auto;
 	padding: 10px 20px;
@@ -44,6 +44,12 @@ div.demoform {
 	margin-bottom: 30px;
 }
 
+table.lijstdemo td{
+	border: 1px solid gray;
+	background-color: white;
+	width: 20px;
+	text-align: center;
+}
 
 a:link {
 	text-decoration: none;

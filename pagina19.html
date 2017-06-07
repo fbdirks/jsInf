@@ -9,79 +9,96 @@
 <header>
 </header>
 <article>
-<h2>[15] Event-handlers</h2>
-<p>
-We hebben bijna alle schakels in handen voor het bouwen van goede formulier validatie in Javascript. Maar formulier validatie moet ook 'getriggerd' worden, dat wil zeggen er moet gereageerd worden op events. Bekende events (ten dele ook al bekend van CSS) zijn:
-<ul>
-	<li>onclick (met de muis &eacute;&eacute;n keer ergens op klikken)</li>
-	<li>onsubmit  (op de submitknop van een formulier klikken)</li>
-	<li>onmouseover (met de muis over een element gaan zonder klikken)</li>
-	<li>onkeypress (een toets indrukken)</li>
-	<li>onload (de webpagina is klaar met laden)</li>
-</ul>
-In totaal zijn er meer dan 50 events die de browser kan onderscheiden en waar dus javascript aan gekoppeld zou kunnen worden. 
-</p>
-<p>
-Er zijn meerdere manieren om javascript aan events te koppelen. De traditionele manier is om in de html declaraties van elementen een event op te nemen met een verwijzing naar de javascript functie die gestart moet worden:
-<pre><code class="language-markup"><script type="prism-html-markup">
-		<form action="verwerken.php" method="post" onsubmit="controleren()">
-</script></code></pre>
-Ergens in een <script></script> gedeelte van de pagina bouw je dan de functie controleren(). Het bezwaar tegen deze manier van werken is dat je de trekker scheidt van het wapen. Als je werkt met externe javascripts voelt dat nog meer als een probleem aan. Bovendien meng je nu eigenlijk HTML en Javascript door elkaar. Soms is het handig, maar niet als regel. Net als je ook altijd moet uitkijken met dit soort mengen van HTML en CSS:
-<pre><code class="language-markup"><script type="prism-html-markup">
-  <p style="color: red">
-</script></code></pre>
-Het is niet verboden, maar bij het debuggen van pagina opmaak moet je nu op meer plekken kijken en dat is niet altijd plezierig.
-</p>
-<p>
-Een tweede manier is een HTML element via Javascript zelf te koppelen aan een event en een bijhorende functie. Alles gebeurt dan alleen in Javascript. 
-<pre><code class="language-markup"><script type="prism-html-markup">
-<form id="formulier" action="verwerken.php" method="post">
-</script></code></pre>
-en in het &lt;script> gedeelte:
+
+<h2>19.  Strings, Arrays en Objects (kort door de bocht)</h2>
+<h3>Strings</h3>
+<p>JS kent net als PHP (en alle andere algemene programmeertalen) variabelen van het type 'string' (= een reeks tekens). 
 <pre><code class="language-javascript">
-	var formulier=document.getDocumentsById("formulier");
-
-	formulier.onsubmit = controleren;  // zie opmerking hieronder
-
-	function controleren() {
-	    .. allerlei code ..
-	}
+var startzin = "Het was koud, bitter koud.";
+</code></pre>
+Enkele of dubbele aanhalingstekens maakt JS niets uit. In PHP heb je dubbele aanhalingstekens nodig als je in een string een variabelenaam in runtime wilde vervangen door de waarde van die variabele. In JS bestaat dat niet. Als je in een JS string een variabele naam opneemt zal alleen die naam en niet de waarde afgedrukt worden. Wil je de waarde afdrukken dan moet je zo iets doen:
+<pre><code class="language-javascript">
+var auteur = "W.G. van der Hulst";
+console.log("geschreven door " + auteur + ".");
+</code></pre>
+<p>Deze stringconcatenatie (concatenatie = samenvoegen, aan elkaar plakken) wordt in PHP door de . gedaan, hier dus door de +.
+Net als bij PHP moet je ieder aanhalingsteken dat onderdeel is van een string door een escape teken laten voorafgaan:
+<pre><code class="language-javascript">
+var naam = 'Maarten \'t Hart';
+console.log(naam);// levert Maarten 't Hart op.
 </code></pre>
 
-</p>
-<p>
-Opmerking: controleren verwijst naar een functie. Om te voorkomen dat deze functie op deze plek meteen wordt uitgevoerd (zonder dat er echt gesubmit is)  laten we de () weg. Dan wordt de functie pas aangeroepen als er geklikt wordt op de submitknop van het formulier.
-</p><p>
-Een nadeel van deze methode is dat je hem niet makkelijk twee keer kunt gebruiken om twee verschillende events aan een element te koppelen.
-</p><p>
-Een nog modernere methode waarmee dat laatste wel kan is het gebruik maken van de functie addEventListener:
+Overigens: dit werkt ook:
 <pre><code class="language-javascript">
-	var formulier = document.getElementsById("formulier");
-
-	formulier.addEventListener("submit" , controleren);
-
-	function controleren(e) {
-	    .. code ..;
-	    e.preventDefault();
-	}
-</code></pre>    
-Bij de functie declaratie zie je dat een speciale variabele e gebruikt wordt (de naam is facultatief, maar de 'e' zie je als gewoonte overal opduiken). Die 'e' is het eventobject dat je aan de functie meegeeft. Dit object bestaat uit een heleboel gegevens. Je kunt het object inspecteren door de functie bijvoorbeeld zo te noteren:
-<pre><code class="language-javascript">
- 	function controleren(e) {
-        console.log(e);
-    }
+var naam = "Maarten 't Hart";
+console.log(naam);
 </code></pre>
-   
+<p>Net als bij PHP kun je losse letters in een string benaderen via een rugnummer (vanaf 0):
+	<pre><code class="language-javascript">console.log(naam[2] + naam[6]);  => levert a en n op</code></pre>	
+Visueel voorgesteld ('indexen' is de officiele naam voor 'rugnummers'):
+	<table class="lijstdemo">
+		<tr><td style="width: 40px;border: 0px; background-color: light-gray">indexen</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td></tr>
+		<tr><td style="width: 40px;border: 0px; background-color: light-gray">string</td><td>M</td><td>a</td><td>a</td><td>r</td><td>t</td><td>e</td><td>n</td><td> </td><td>'</td><td>t</td><td> </td><td>H</td><td>a</td><td>r</td><td>t</td></tr>
+	</table>
 </p>
+<p>Een hele reeks gespecialiseerde string functies maken het mogelijk ieder onderdeeltje van een string te benaderen, splitten en in hoofdletters te veranderen en strings van voor tot achter en omgekeerd te doorzoeken op het voorkomen van letters of kleinere strings. Zie hiervoor de documentatie op (bijvoorbeeld W3schools). 
+	<ul>
+		<li>string.length</li>
+		<pre><code class="language-javascript">var lengte = naam.length; // levert 15 op in het voorbeeld!</code></pre>
+		<li>string.search("speld"); => positie van "speld" in de string</li>
+		<pre><code class="language-javascript">var start = naam.search("en"); // levert 5 op in het voorbeeld!</code></pre>
+		<li>string.slice(s,e) => haalt stukje van positie s(tart) <u>tot</u> positie e(ind) op uit de string</li>
+		<pre><code class="language-javascript">var stukje = naam.slice(4,6); // levert 'te' op in het voorbeeld!</code></pre>
+		<li>string.replace("boerenkool","zuurkool"); => vervangt eerstgenoemde door laatstgenoemde in string. Ook bruikbaar met reguliere expressies (zie later).</li>
+		<pre><code class="language-javascript">var anders = naam.replace("en","je"); // levert 'Maartje 't Hart' op in het voorbeeld!</code></pre>		
+		<li>string.match(regex) => retourneert een array met alle keren dat de regex voorkomt in string.</li>
+		<pre><code class="language-javascript">var aantal = naam.match(/a/g); // levert 3 op (aantal a's)</code></pre>	
+	</ul>
+</p>
+<h3>Arrays</h3><p>
+Arrays en Objecten liggen in JS heel dicht bij elkaar. Heel kort door de bocht zou je kunnen zeggen dat het er de schijn van heeft dat objecten in JavaScript heel erg lijken op de associatieve arrays die PHP kent en de Arrays in JS vergelijkbaar zijn met de niet-associatieve arrays van PHP:    
+<br>
+Array:
+<pre><code class="language-javascript">
+var dagen = ["Zondag","Maandag", "Dinsdag", "Woensdag","Donderdag","Vrijdag","Zaterdag"];
+console.log(dagen[3]); => levert woensdag op
+</code></pre>
+
+<br>
+Object:
+<pre><code class="language-javascript">
+var auto = { merk:"Opel", type:"Vectra"};
+console.log(auto.merk); => levert "Opel" op
+</code></pre>
+Let in dit laatste geval op de . notatie waarmee je attributen van een object kunt benaderen.</p>
 <p>
-Als je dan de Console open hebt staan en het script uitvoert zie je welke gegevens je allemaal uit een event object zou kunnen oproepen. Drie voorbeeldjes:
+Voor zowel arrays als objecten zijn er weer een range van handige functies, bijvoorbeeld voor sorteren en dergelijke. Zie de documentatie. Speciale aandacht voor de functie toString: deze functie maakt van de inhoud van een array (of object) een complete string. Dit lijkt een beetje op de print_r functie van PHP en is dus o.a. handig bij debuggen.
 <ul>
-	<li>e.currentTarget = het element dat het event triggerde</li>
-	<li>e.type = het soort event (bv mouserover of submit)</li>
-	<li>e.preventDefault() = de methode die voorkomt dat de default actie van het element wordt uitgevoerd. De default actie van een submit is het starten van de 'action', de default actie van klikken op een link is naar die pagina toe gaan. PreventDefault voorkomt dat.  </li>
-</ul>
- 
-</p>    
+	<li>array.length => rapporteert het aantal elementen in een array</li>
+<pre><code class="language-javascript">var aantal = dagen.length; // levert 7 op in dit voorbeeld.</code></pre>	
+	<li>array.toString(); => toont array als ꨮ string</li>
+<pre><code class="language-javascript">var tekst = dagen.toString();
+// levert "Zondag,Maandag,Dinsdag,Woensdag,Donderdag,Vrijdag,Zaterdag"  op;</code></pre>	
+	<li>array.pop() => verwijdert en retourneert het laatste element van de array (LastInFirstOut)</li>
+<pre><code class="language-javascript">var dagenPop = dagen.pop();// levert "Zaterdag" op en verwijdert Zaterdag uit de array.</code></pre>	
+	<li>array.push() => voegt aan het eind een nieuw element toe.</li>
+<pre><code class="language-javascript">var dagenPush = dagen.push("Saturday"); // Voegt 'Saturday' toe aan eind array en retourneert nieuwe array lengte</code></pre>	
+	<li>array.shift() => verwijdert en retourneert het eerste element van de array (FirstInFirstOut)</li>
+<pre><code class="language-javascript">var dagenShift = dagen.shift();// levert "Zondag" op en verwijdert Zondag uit de array.</code></pre>	
+	<li>array.unshift() => voegt element aan begin toe, andere elementen schuiven op</li>
+<pre><code class="language-javascript">var dagenUnshift=dagen.unshift("Sunday"); // Voegt "Sunday" aan begin array toe en retourneert nieuwe array lengte</code></pre>	
+	<li>array.splice(s,a,nieuwe waarden) => voegt vanaf positie s nieuwe elementen toe en verwijdert a oude elementen. (a=0 betekent dus invoegen midden in een array)</li>
+<pre><code class="language-javascript">var dagenSplice=dagen.splice(3,1,"Wednesday");// vervangt op positie 1 element door Wednesday en retourneert oude inhoud.</code></pre>	
+	<li>array.slice(s) => verzamelt vanaf positie s de elementen uit de array in een nieuwe array</li>
+<pre><code class="language-javascript">var dagenSlice=dagen.slice(5);// snijdt weg vanaf positie 5</code></pre>	
+	<li>array.sort() => sorteert a-z</li>
+<pre><code class="language-javascript">var adegn = dagen.sort();//sorteert dagen alfabetisch. Dagen verandert!</code></pre>	
+	<li>array.reverse() => sorteert z-a</li>
+	<pre><code class="language-javascript">var negad = dagen.reverse();// keert dagen om</code></pre>	
+	<li>enz...</li>
+</ul>	
+Bekijk deze pagina met de console om de voorbeeldjes in actie te zien.
+</p>
 
 
 
@@ -101,6 +118,53 @@ Als je dan de Console open hebt staan en het script uitvoert zie je welke gegeve
 $( document ).ready(function(){
 	kop();
 	voet();
+	console.log("Dit zijn de voorbeelden van strings en arrays:");
+	var naam = "Maarten 't Hart";
+	console.log("Voorbeeld naam: " + naam)
+	var lengte = naam.length; // levert 15 op in het voorbeeld!
+	console.log("Lengte: " + lengte);
+	var start = naam.search("en"); // levert 5 op in het voorbeeld!
+	console.log("Komt 'en' voor?" + start);
+	var stukje = naam.slice(4,6); // levert 'te' op in het voorbeeld!
+	console.log("Haal alles vanaf 4 tot aan  op: " + stukje);
+	var anders = naam.replace("en","je"); // levert 'Maartje 't Hart' op in het voorbeeld!
+	console.log("Vervang 'en' door 'je': " + anders);
+	var aantal = naam.match(/a/g); // levert 3 op (aantal a's)
+	console.log("Aantal a's: " + aantal);
+	
+	// Array voorbeelden
+	var dagen = ["Zondag","Maandag", "Dinsdag", "Woensdag","Donderdag","Vrijdag","Zaterdag"];
+	console.log("Array: " + dagen);
+	var aantalD = dagen.length; // levert 7 op in dit voorbeeld.
+	console.log("Aantal: " + aantalD);
+	var tekstD = dagen.toString(); 
+	console.log("ToString: " + tekstD);
+	var dagenPop = dagen.pop();
+	console.log("dagenPop: " + dagenPop);
+	console.log("Na dagenPop: " + dagen);
+	var dagenPush = dagen.push("Saturday");
+	console.log("dagenPush: " + dagenPush);
+	console.log("Na dagenPush: " + dagen);
+	var dagenShift = dagen.shift();// levert "Zondag" op en verwijdert Zondag uit de array.
+	console.log("DagenShift: " + dagenShift);
+	console.log("Dagen na DagenShift : " + dagen);
+	var dagenUnshift=dagen.unshift("Sunday"); // Voegt "Sunday" aan begin array toe en retourneert nieuwe array lengte
+	console.log("DagenUnshift: " + dagenUnshift);
+	console.log("Dagen na DagenUnshift: " + dagen);
+	var dagenSplice=dagen.splice(3,1,"Wednesday");
+	console.log("DagenSplice: " + dagenSplice);
+	console.log("Dagen na dagen.splice: " + dagen);
+	var dagenSlice=dagen.slice(5);
+	console.log("DagenSlice: " + dagenSlice);
+	console.log("Dagen na dagen.slice: " + dagen);
+	var adegn = dagen.sort();
+	console.log("adegn: "+adegn);
+	var dagen = ["Zondag","Maandag", "Dinsdag", "Woensdag","Donderdag","Vrijdag","Zaterdag"];
+	var negad = dagen.reverse();
+	console.log("negad: " + negad);
+	
+
+
 });
 </script>
 </body>

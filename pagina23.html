@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="UTF-8">
+</head>
+<body>
+<header>
+</header>
+
+<article>
+<h1>[17] “Alles is een object”</h1>
+<p>Javascript is object georiënteerd. Dat is niet altijd meteen duidelijk. Je kunt naar hartelust procedureel en functioneel aan de gang zonder over objecten na te hoeven denken. Maar het browserscherm waarin je met javascript allerlei dingen doet is al een object dat kenmerken en methoden heeft. Een browserscherm hoort bij het object window. Eigenschappen van dit object zijn bijvoorbeeld de naam van het window, de positie op het scherm, de locatie (dus het adres van de pagina die getoond wordt), de geschiedenis en het protocol waarmee de pagina geopend is. De methoden van dit object zijn onder andere 
+<ul>
+<li>print  (waarmee je de printdialoog voor een browserscherm start)</li>
+<li>alert (waarmee je een mededeling kunt openen)</li>
+<li>confirm (waarmee je een bevestigingsvraag kunt stellen)</li>
+<li>open (waarmee je een nieuwe of vervangende pagina kunt laden)</li>
+<li>back (waarmee je in de geschiedenis terug kunt gaan)</li>
+</ul>
+Gebruik maken van kenmerken en methoden kan met behulp van de <b>dot notatie</b>. Deze programma regel bijvoorbeeld zet in de variabele hoogte de binnenhoogte van het browserscherm:
+<pre><code class="language-javascript">var hoogte = window.innerHeight ;   </code></pre>
+Deze regel springt een pagina terug in de geschiedenis:
+<pre><code class="language-javascript">window.history.back();   </code></pre>
+	
+en deze regel start het uitprinten van een pagina:
+<pre><code class="language-javascript">window.print();   </code></pre>
+Bij doorverwijzen heb je vaak window.open nodig. Dit is een code fragment waarin ook allerlei parameters van de te openen pagina worden gezet:
+<pre><code class="language-javascript">var myWindow = window.open("https://www.w3schools.com", "cursus", "width=200,height=100");
+</code></pre>
+
+<p>
+Documentatie is onontbeerlijk als je met het window object aan de gang wilt gaan. Je vindt deze hier: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window" target="_new">developer.mozilla.org/en-US/docs/Web/API/Window</a> . </p>
+<p>
+Het is belangrijk om met dit soort objecten te leren stoeien. We zullen later zien dat er allerlei javascript bibliotheken zijn die je van groot nut kunnen zijn omdat ze of de omgang met de DOM vergemakkelijken, of jou de noodzaak uit handen nemen om voor iedere denkbare browserversie die er maar bestaat of bestaan heeft een functie te schrijven die werkt. Dit soort bibliotheken zijn vaak opgezet in die object vorm die ook window kenmerkt. Hoe meer je met die manier van werken thuis bent, hoe sneller je met die bibliotheken aan de slag kunt.
+</p>
+
+</article>
+<footer>
+
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
+</body>

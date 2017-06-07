@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="UTF-8">
+</head>
+<body>
+<header>
+</header>
+<article>
+<h1>[jQ1] jQuery 1</h1>
+<p>De javascript bibliotheek jQuery wordt overal op het internet gebruikt om het bouwen van interactieve webpagina's te versnellen en te vergemakkelijken. Met jQuery kun je bijvoorbeeld heel makkelijk de css van een element op een pagina laten veranderen (een input veld dat je vergeten bent in te vullen een opvallen rood kader geven bijvoorbeeld). Omdat jQuery zelf volledig uit javascript bestaat kun je betogen dat het gebruiken van jQuery eigenlijk overbodig is. Alles wat jQuery kan, kan javascript zelf natuurlijk ook. Het voordeel is alleen maar dat de ontwikkelaars van jQuery al die veel voorkomende acties al helemaal geprogrammeerd hebben en daarin ook nog eens rekening hebben gehouden met verschillen in browsers. Gebruik maken van jQuery maakt het dan voor anderen sneller en makkelijker om webpagina's te voorzien van dit soort effecten.</p>
+
+<p>In deze paragraven worden alleen de basiselementen van het gebruik van jQuery behandeld. </p>
+
+<h3>Voorbereiden</h3>
+<p>Je kunt jQuery downloaden en ergens in het pad van de webpagina's zetten waar je het in wilt gebruiken. Daarbij kun je kiezen voor de gecomprimeerde (= onleesbare) versie en de ontwikkelaarsversie die wel leesbare javascript bevat. Normaal gesproken is de normale versie de beste. Downloaden kan op https://www.jquery.com </p>
+<p>Een andere mogelijkheid is de jquery gebruiken die op andere sites wordt bijgehouden en in jouw scripts daar naar linken. Dit heet gebruiken maken van een Content Delivery Network (CDN). Op de site van jquery vind je de links die je dan moet gebruiken.</p> 
+<p>Het is hoe dan ook aan te raden thuis te raken op de site van jquery zelf, en met name ook het learning center op https://learn.jquery.com/ . Hier staat de documentatie en staat allerlei lesmateriaal.</p>
+
+<h3>Gebruik maken</h3>
+<p>Voordat je eigen scripts met jQuery elementen er in door een webpagina uitgevoerd kunnen worden moet de jQuery bibliotheek in je pagina worden ingelezen:
+<pre><code class="language-javascript">
+	&lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
+	&lt;script&gt; hier je eigen scripts &lt;/script&gt;
+</code></pre>	
+Op de plek van jquery.js kan in dit voorbeeld ook de URL staan die verwijst naar de jquery in een CDN.</p>
+
+
+<h3>Skelet van een jQuery opdracht</h3>
+<p>jQuery stelt in de bibliotheek eigenlijk &eacute;&eacute;n object ter beschikking: jQuery. Dit object kan het makkelijkst aangesproken worden met het teken $. Dit is de alias van jQuery. In het skelet van een jquery opdracht is dit het eerste teken:
+<pre><code class="language-javascript">$(selector).actie</code></pre>
+Voor PHP veteranen is dit altijd even wat wennen. De andere twee dingen in het skelet zijn de selector, dat is de selectie van elementen op je webpagina waarop je een jquery actie wilt gaan uitvoeren  en de actie, dus de handeling die je daarmee wilt uitvoeren. Je wilt bijvoorbeeld alle &lt;p&gt; onderdelen van een webpagina de tekstkleur blauw geven:
+<pre><code class="language-javascript">$('p').css("color","blue");</code></pre>
+</p>
+
+<h3>Selectors & Filters</h3>
+<p>Selecteren in jQuery is een serieuze zaak. Er zijn verschillende, makkelijke maar ook complexe technieken om heel precies elementen op een webpagina te selecteren. Een paar voorbeelden:
+<ul>
+<li>per tag:  $('p').</li>
+<li>per tag met een bepaalde class: $('p.artikel').</li>
+<li>per id: $("#paginanummer").</li>
+<li>alle tags met een bepaald attribuut  $( "input[name='voornaam']" );</li>
+<li>meerdere tags: $('p , li').</li>
+<li>bijzondere mogelijkheden, iedere oneven tabelrij: $( "tr:odd" ).</li>
+</ul>
+Een bepaald doel kan met al die selectiemogelijkheden soms op meerdere manieren bereikbaar zijn. 
+Voor alle selectie en filtermogelijkheden wordt verder verwezen naar de documentatie van jQuery zelf.</p>
+
+<h3>Acties</h3>
+<p>Na het selecteren van een webpagina onderdeel moet je natuurlijk beslissen wat je er mee wilt doen. Mogelijkheden zijn bijvoorbeeld:</p>
+<ul>
+<li>de css van een tag wijzigen:   $('li').css("color","blue");</li>
+<li>de html inhoud van een tag wijzigen:  $('p#voetnoet').html("<b>niet serieus nemen</b>');</li>
+<li>.. eventueel ook alleen de tekst: $('p#voetnoot').text("niet serieus nemen");</li>
+<li>de value van een element wijzigen: $('input#achternaam').value("Vul iets in");</li>
+<li>attributen toevoegen of wijzigen: $('p').attr("id","voetnoot");</li>
+<li>elementen aan- of uitzetten, verwijderen, of animeren: $("li").hide();</li>
+</ul>
+<p>Het is vaak de bedoeling dat javascript reageert op events die op de pagina gebeuren. Ook daar maakt jQuery het je makkelijker om events te benoemen. Het bekendste event is 
+<pre><code class="language-javascript">
+	$( document ).ready();
+</code></pre>
+Dit is het event dat start als de de DOM van een pagina geladen is (het kan zijn dat plaatjes en dergelijke dan nog niet allemaal geladen zijn!). Binnen de ready komt meestal een anonieme functie (zie 17!). Ready is dus een methode van het jQuery object waarvan je zelf de code schrijft. Dit is een (klein) voorbeeldje. De anonieme functie begint na <b>.ready(</b>:
+<pre><code class="language-javascript">
+$( document ).ready(function() {
+    console.log( "ready!" );
+});
+</code></pre>
+</p>
+<p>Het aanmelden van meer events is een fluitje van een cent. Deze code komt over het algemeen in het $(document).ready() blok te staan (dat dus enorm kan uitgroeien!). Dit is een voorbeeld:
+<pre><code class="language-javascript">
+$("p").click(function(){
+ alert("Geklikt op een alinea (&lt;p&gt;)!");
+}); 
+</code></pre>
+Als iemand klikt op een alinea komt er een mededeling op het scherm.</p>
+
+
+
+</article>
+<footer>
+
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
+</body>
+</html>
