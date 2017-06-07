@@ -1,7 +1,7 @@
 body {
 	
 	font-family: verdana;
-	font-size: 10pt;
+	font-size: 12pt;
 	background-color: #ffffb3;
 }
 
@@ -34,6 +34,16 @@ footer {
 	margin: auto;
 	text-align: center;
 }
+
+div.demoform {
+	padding: 10px;
+	border: 1px solid gray;
+	border-radius: 3px;
+	width: 170px;
+	margin-left: 50px;
+	margin-bottom: 30px;
+}
+
 
 a:link {
 	text-decoration: none;
