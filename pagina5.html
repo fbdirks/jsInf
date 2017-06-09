@@ -16,23 +16,27 @@
 <p>Hier verandert Javascript de HTML code die wordt omsloten door een specifieke tag:
 <pre><code class="language-javascript">var melding = “Goedenacht!”;
 document.getElementById(“melding”).innerHTML = melding;</code></pre>
+<p>In het HTML deel van deze pagina moet dan iets dergelijks staan:
+<pre><code class="language-markup"><script type="prism-html-markup"><span id="melding"></span></script></code></pre>	
+</p>
 <h4>2: veranderen van de complete inhoud van een pagina</h4>
 Daarnaast kan de JS output door de browser als een complete webpagina worden opgevat (document.write()).
 <pre><code class="language-javascript">var melding = “Goedemorgen!”;
 document.write(melding);
 </code></pre>
+Omdat dit dus de complete inhoud van een browserpagina verandert is het maar beperkt nuttig.</p>
 <h4>3: Uitvoer van informatie naar een popup scherm</h4>
 Via een alert() kan er ook een popup scherm worden getoond.
 <pre><code class="language-javascript">
 var melding = “Goedemiddag!”;
 alert(melding);
 </code></pre>
+Pop-ups zijn bij gebruikers niet zo populair. In de browsers kun je pop-ups meestal ook uitzetten.</p>
 <h4>4: Uitvoer naar de <i>console</i></h4>
 Via console.log() kan er geschreven worden naar de Javascript console die in een browser geopend kan worden (bijvoorbeeld met F12). Dit is meer iets voor ontwikkelaars. Deze vorm van output is niet geschikt voor gewone gebruikers die een webpagina willen bekijken.
 <pre><code class="language-javascript">
 var melding = “Goedeavond!”;
-console.log(melding);
-</code></pre>
+console.log(melding);</code></pre>
 </p>
 <p>
 <h4>5: Uitvoer naar het werkscherm van een andere applicatie</h4>
