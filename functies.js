@@ -1,4 +1,3 @@
-
 function kop() {
  	// bepalen eigen filenaam en volgende en vorige pagina.
  	var url = window.location.pathname;
@@ -10,13 +9,22 @@ function kop() {
 	if (vorige<1) vorige = 1;
 	var volgendePagina = "pagina" + volgende.toString() +  ".html";
 	var vorigePagina = "pagina" + vorige.toString() +  ".html";
+	
+	if (filename=="index.html") {
+		volgendePagina = "pagina1.html";
+		vorigePagina = "index.html";
+	} else if (filename=="pagina1.html"){
+		vorigePagina = "index.html";
+	}
  
   var logo = "img/jsmall.png";
   var kopTekst = "<img src=\"" + logo + "\" />"+ " <i>aantekeningen</i>";
+
   var knops = "<br><br><span style=\"text-align: right\" title=\"vorige pagina\"><a href=\"" + vorigePagina + "\"><span class=\"knopje\">&lt;</span></a>";
   knops += " <a href=\"pagina1.html\" title=\"pagina 1\"><span class=\"knopje\">*</span></a> ";
   knops += "<a href=\""+ volgendePagina + "\" title=\"volgende pagina\"><span class=\"knopje\">&gt;</span></a></span>";
   kopTekst += knops;
+
   $('header').html(kopTekst);
   console.log(kopTekst);
 

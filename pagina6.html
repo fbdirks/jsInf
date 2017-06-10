@@ -12,17 +12,17 @@
 <h1>6. Het DOM model</h1>
 <p>Fundamenteel voor de mogelijkheid om binnen Javascript heel gericht onderdelen van een webpagina te kunnen beïnvloeden is het DOM model, het Document Object Model. Dit model geeft aan hoe een webbrowser intern een pagina bekijkt, welke objecten (alinea’s, formulieren, koppen, div’s) er op de pagina staan en in welke hierarchie deze objecten staan. Dit is onder andere van belang voor hoe css opmaak wordt doorgegeven. Maar Javascript maakt er dus ook gebruik van om attributen van html objecten mee te beinvloeden. DOM objecten hebben, zoals het echte objecten betaamt, attributen, maar ook methoden.</p>
 <p>Het DOM Model is in de kern niets anders dan een representatie van de elementen van een webpagina:
-  <img src="img/DOM.png">
+  <img src="img/dom2.png">
   <h6>Bron: washington.edu</h6>
 </p>
 <p>Ieder punt in deze ‘boom’ heet een node.  Er zijn drie soorten nodes:
   <ul>
-    <li>element nodes (in feite HTML tags, die ‘kinderen’ (=andere nodes binnen zichzelf) en ‘attributen’ kunnen hebben) In het voorbeeld hierboven bijvoorbeeld div, maar er zijn er meer.</li>
-    <li>text nodes (die alleen maar uit tekst bestaan (geen tags dus) In het voorbeeld hierboven title.</li>
-    <li>attribuut nodes (die een attribuut van het element benoemen) In het voorbeeld hierboven kan de div een class of id attribuut hebben.</li>
+    <li>element nodes (in feite HTML tags, die ‘kinderen’ (=andere nodes binnen zichzelf) en ‘attributen’ kunnen hebben) In het voorbeeld hierboven bijvoorbeeld H1 en a (let op de groene kaders).</li>
+    <li>text nodes (die alleen maar uit tekst bestaan (geen tags dus) In het voorbeeld hierboven het 'welkom' binnen de H1 tag (let op de oranje kaders).</li>
+    <li>attribuut nodes (die een attribuut van het element benoemen) In het voorbeeld hierboven is <b>href</b> een voorbeeld van een attribuut node, met een waarde, nl. de link (blauwe kader).</li>
   </ul>
-Deze &lt;a&gt; tag bijvoorbeeld:  <b>&lt;a href=”test.html”&gt;Klik hier&lt;/a&gt;</b> is zelf een element node, heeft als tekst ‘klik hier’ en als ‘link’ attribuut: test.html.</p>
-<p>Tags binnen een tag kunnen allerlei aanduidingen krijgen (‘firstChild, nextSibling,parentNode’)  die duidelijk maken waar zij zich in de hierarchie bevinden. Ook kunnen met de methoden als appendChild(nod) en removeChild(node) nodes aan de boom gemanipuleerd worden.</p>
+Deze &lt;a&gt; tag bijvoorbeeld:  <b>&lt;a href=”test.html”&gt;Klik hier&lt;/a&gt;</b> is zelf een element node, heeft als tekst ‘klik hier’ en als ‘href’ attribuut: test.html.</p>
+<p>Tags binnen een tag kunnen allerlei aanduidingen krijgen (‘firstChild, nextSibling,parentNode’)  die duidelijk maken waar zij zich in de hierarchie bevinden. Ook kunnen met de methoden als appendChild(nod) en removeChild(node) nodes aan de boom gemanipuleerd worden. Voor deze reeks aantekeningen gaat het gedetailleerd navigeren in het DOM te ver en zal niet verder behandeld worden, tenzij het voor een specifieke oplossing nodig is.</p>
 <p>Nodes kun je met Javascript benaderen via commando’s als
   <pre><code class="language-javascript">
 document.getElementById(“id”)
