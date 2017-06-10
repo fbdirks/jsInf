@@ -13,17 +13,23 @@ function kop() {
  
   var logo = "img/jsmall.png";
   var kopTekst = "<img src=\"" + logo + "\" />"+ " <i>aantekeningen</i>";
-  kopTekst += "<br><br><span style=\"text-align: right\" title=\"vorige pagina\"><a href=\"" + vorigePagina + "\">&lt;</a>";
-  kopTekst += " <a href=\"pagina1.html\" title=\"pagina 1\">*</a> ";
-  kopTekst += "<a href=\""+ volgendePagina + "\" title=\"volgende pagina\">&gt;</a></span>";
+  var knops = "<br><br><span style=\"text-align: right\" title=\"vorige pagina\"><a href=\"" + vorigePagina + "\"><span class=\"knopje\">&lt;</span></a>";
+  knops += " <a href=\"pagina1.html\" title=\"pagina 1\"><span class=\"knopje\">*</span></a> ";
+  knops += "<a href=\""+ volgendePagina + "\" title=\"volgende pagina\"><span class=\"knopje\">&gt;</span></a></span>";
+  kopTekst += knops;
   $('header').html(kopTekst);
   console.log(kopTekst);
+
+  // voettekst aanmaken
+  var d = new Date();
+  var voetTekst = knops + "<br><h6> &copy;" + d.getFullYear() + " dsf - <a href=\"index.html\">home<\a></h6>";
+  $("footer").html(voetTekst);
+  
 }
 
 function voet() {
+  // functie is leeggemaakt...
   
-    var d = new Date();
-    var voetTekst = "<h6> &copy;" + d.getFullYear() + " dsf - <a href=\"index.html\">home<\a>";
-    $("footer").html(voetTekst);
+  
 }
 

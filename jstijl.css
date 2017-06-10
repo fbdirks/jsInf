@@ -44,6 +44,16 @@ div.demoform {
 	margin-bottom: 30px;
 }
 
+span.knopje{
+	border-radius: 60px;
+	border: 1px solid black;
+}
+
+span.knopje:hover{
+	background-color: black;
+	color:white;
+}
+
 table.lijstdemo td{
 	border: 1px solid gray;
 	background-color: white;
