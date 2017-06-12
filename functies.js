@@ -21,7 +21,7 @@ function kop() {
   var kopTekst = "<img src=\"" + logo + "\" />"+ " <i>aantekeningen</i>";
 
   var knops = "<br><br><span style=\"text-align: right\" title=\"vorige pagina\"><a href=\"" + vorigePagina + "\"><span class=\"knopje\">&lt;</span></a>";
-  knops += " <a href=\"pagina1.html\" title=\"pagina 1\"><span class=\"knopje\">*</span></a> ";
+  knops += " <a href=\index.html\" title=\"pagina 1\"><span class=\"knopje\">*</span></a> ";
   knops += "<a href=\""+ volgendePagina + "\" title=\"volgende pagina\"><span class=\"knopje\">&gt;</span></a></span>";
   kopTekst += knops;
 
