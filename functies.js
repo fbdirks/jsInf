@@ -20,9 +20,9 @@ function kop() {
   var logo = "img/jsmall.png";
   var kopTekst = "<img src=\"" + logo + "\" />"+ " <i>aantekeningen</i>";
 
-  var knops = "<br><br><span style=\"text-align: right\" title=\"vorige pagina\"><a href=\"" + vorigePagina + "\"><span class=\"knopje\">&lt;</span></a>";
-  knops += " <a href=\"index.html\" title=\"pagina 1\"><span class=\"knopje\">*</span></a> ";
-  knops += "<a href=\""+ volgendePagina + "\" title=\"volgende pagina\"><span class=\"knopje\">&gt;</span></a></span>";
+  var knops = "<br><br><hr><span style=\"text-align: right\" title=\"vorige pagina\"><a href=\"" + vorigePagina + "\"><span class=\"knopje\">&lt;</span></a>";
+  knops += " <a href=\"index.html\" title=\"Index\"><span class=\"knopje\">*</span></a> ";
+  knops += "<a href=\""+ volgendePagina + "\" title=\"volgende pagina\"><span class=\"knopje\">&gt;</span></a><hr></span>";
   kopTekst += knops;
 
   $('header').html(kopTekst);

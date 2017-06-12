@@ -29,6 +29,10 @@ header img {
 	box-shadow: 10px 10px 5px #888888;
 }
 
+header hr {
+	width: 400px;
+}
+
 footer {
 	width: 900px;
 	margin: auto;
