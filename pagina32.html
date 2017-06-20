@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="windows-1252">
+</head>
+<body>
+<header>
+</header>
+<article>
+
+
+<h2>De Log: terug in de geschiedenis..</h2>
+<p>Versiecontrole systemen hebben vooral nut omdat ze laten zien hoe een project zich ontwikkeld heeft en daarbij de mogelijkheid bieden stappen terug te zetten als een nieuwe ontwikkeling achteraf toch niet blijkt te werken. Ze functioneren hierin als een soort 'UnDo' machine. Iedereen die wel eens aan complexere softwareprojecten heeft gewerkt kent wel die momenten waarop je na een heleboel programmeer geploeter weer even terug wou naar de oude code 'die wel werkte'. </p>
+<p>Een belangrijke voorwaarde voor deze functie is dat er regelmatige commits zijn gedaan, want git houdt alleen van de <b>repository</b> de geschiedenis bij. Het is dus geen rare gewoonte om iedere dag of ieder uur dat je aan een project werkt of in ieder geval na iedere functionele mijlpaal een commit te doen.</p> 
+<p>De geschiedenis van commits bekijk je met behulp van 
+<pre><code class="language-batch">cd ..
+git log
+</code></pre>
+De geschiedenis van commits die een specifieke file betreffen (soms ook heel nuttig!) bekijk je zo:
+<pre><code class="language-batch">cd ..
+git log <filenaam>
+</code></pre>
+
+</article>
+<footer>
+
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
+</body>

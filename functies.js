@@ -9,13 +9,17 @@ function kop() {
 	if (vorige<1) vorige = 1;
 	var volgendePagina = "pagina" + volgende.toString() +  ".html";
 	var vorigePagina = "pagina" + vorige.toString() +  ".html";
-	
+	//alert(filename);
 	if (filename=="index.html") {
 		volgendePagina = "pagina1.html";
 		vorigePagina = "index.html";
 	} else if (filename=="pagina1.html"){
 		vorigePagina = "index.html";
 	}
+	
+	// Als volgende pagina niet bestaat verwijst die pagina naar zichzelf.
+	if (!fileExists(volgendePagina)) volgendePagina=filename;
+	
  
   var logo = "img/jsmall.png";
   var kopTekst = "<img src=\"" + logo + "\" />"+ " <i>aantekeningen</i>";
@@ -41,3 +45,13 @@ function voet() {
   
 }
 
+function fileExists(url) {
+    if(url){
+        var req = new XMLHttpRequest();
+        req.open('GET', url, false);
+        req.send();
+        return req.status==200;
+    } else {
+        return false;
+    }
+}
