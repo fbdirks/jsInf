@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="windows-1252">
+</head>
+<body>
+<header>
+</header>
+<article>
+<h2>Branches en Merges</h2>
+<p>Een <i>branche</i> is een ontwikkellijn in het huidige project die onderscheiden is van andere ontwikkellijnen.</p>
+<p>Een voorbeeld is bijvoorbeeld dat iemand van het team (of jijzelf) wil proberen om een bepaald onderdeel van een site of applicatie anders op te zetten of een compleet nieuwe feature aan een applicatie toe te voegen. Om anderen of jezelf niet in de weg te zitten bij het werken aan de 'normale' en misschien wel zwaar geteste en perfect werkende ontwikkellijn maak je dan een aparte ontwikkellijn, of in het jargon van Git: een 'branche', een vertakking. Dit is het commando:</p>
+<pre><code class="language-batch">
+git branche "AddMemory"
+</code></pre>
+<p>Als je <i>git status</i> zie je geen verschil en dat komt omdat de vertakking wel gemaakt is maar je nog niet naar de vertakking geswitchd bent. Dat doe je met het commando (en we voegen er meteen een <i>git status</i> aan toe:</p>
+<pre><code class="language-batch">
+git checkout AddMemory
+git status
+</code></pre>
+<p>Met dit als resultaat:</p>
+<p><img class="gitscreen" src="gitscreen11.png"></p>
+
+</article>
+<footer>
+
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
+</body>
